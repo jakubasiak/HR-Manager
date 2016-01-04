@@ -1,0 +1,61 @@
+﻿@model HR_Manager.Models.JobOffer
+
+@{
+    ViewBag.Title = "Rekrutacja";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>@Html.DisplayFor(model => model.Name)</h1>
+        <p>Lokalizacja: @Html.DisplayFor(model => model.Location)</p>
+        <p>Nr. ogłoszenia: @Html.DisplayFor(model => model.OfferNumber)</p>
+        <p>Status: @{
+                        if (Model.Current == true)
+                        {
+                            <text>Aktualne</text>
+                        }
+                        else
+                        {
+                            <text>Nieaktualne</text>
+                        }
+                    }
+        </p>
+    </div>
+   @if (!string.IsNullOrEmpty(Model.AboutCompany)) { 
+    <div class="panel panel-default">
+        <div class="panel-heading" data-toggle="collapse" data-target="#AboutCompanyPanel"><strong>O firmie</strong></div>
+        <div class="panel-body collapse in" id="AboutCompanyPanel">@Html.Raw(Model.AboutCompany)</div>
+    </div>
+   }
+
+@if (!string.IsNullOrEmpty(Model.JobDescription))
+{
+    <div class="panel panel-default">
+        <div class="panel-heading" data-toggle="collapse" data-target="#JobDescriptionPanel"><strong>Opis stanowiska</strong></div>
+        <div class="panel-body collapse in" id="JobDescriptionPanel">@Html.Raw(Model.JobDescription)</div>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(Model.Expectations))
+{
+    <div class="panel panel-default">
+        <div class="panel-heading" data-toggle="collapse" data-target="#ExpectationsPanel"><strong>Oczekiwania wobec kandydata</strong></div>
+        <div class="panel-body collapse in" id="ExpectationsPanel">@Html.Raw(Model.Expectations)</div>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(Model.Offer))
+{
+    <div class="panel panel-default">
+        <div class="panel-heading" data-toggle="collapse" data-target="#OfferPanel"><strong>Oferujemy</strong></div>
+        <div class="panel-body collapse in" id="OfferPanel">@Html.Raw(Model.Offer)</div>
+    </div>
+}
+
+@if (Model.Current != false)
+{
+    <a href="@Url.Action("Apply", "Career", new { id = Model.OfferNumber })"><button type="button" class="btn btn-default btn-lg center-content">Aplikuj na stanowisko</button></a>
+}
+</div>
+   
+@*201512141637364*@

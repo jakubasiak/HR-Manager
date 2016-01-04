@@ -1,0 +1,71 @@
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\roslyn\csc.exe
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\roslyn\Microsoft.CodeAnalysis.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\roslyn\Microsoft.CSharp.Core.targets
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\roslyn\Microsoft.VisualBasic.Core.targets
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\roslyn\System.Collections.Immutable.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\roslyn\System.Reflection.Metadata.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\roslyn\vbc.exe
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\roslyn\VBCSCompiler.exe
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\roslyn\VBCSCompiler.exe.config
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\HR Manager.dll.config
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\HR Manager.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\HR Manager.pdb
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Antlr3.Runtime.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\EntityFramework.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\EntityFramework.SqlServer.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.AspNet.Identity.Core.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.AspNet.Identity.Owin.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Owin.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Owin.Host.SystemWeb.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Owin.Security.Cookies.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Owin.Security.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Owin.Security.Facebook.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Owin.Security.Google.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Owin.Security.OAuth.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Owin.Security.Twitter.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Web.Infrastructure.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Newtonsoft.Json.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Owin.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\System.Web.Helpers.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\System.Web.Mvc.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\System.Web.Optimization.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\System.Web.Razor.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\System.Web.WebPages.Deployment.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\System.Web.WebPages.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\System.Web.WebPages.Razor.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\WebGrease.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\System.Web.Helpers.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\System.Web.Mvc.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\System.Web.Optimization.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\System.Web.Razor.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\System.Web.WebPages.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\System.Web.WebPages.Deployment.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\System.Web.WebPages.Razor.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Antlr3.Runtime.pdb
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Newtonsoft.Json.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\EntityFramework.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\EntityFramework.SqlServer.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.AspNet.Identity.Core.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.AspNet.Identity.Owin.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Owin.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Owin.Host.SystemWeb.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Owin.Security.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Owin.Security.Facebook.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Owin.Security.Cookies.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Owin.Security.OAuth.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Owin.Security.Google.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Owin.Security.Twitter.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR Manager.dll
+c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR Manager.pdb
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR Manager.csprojResolveAssemblyReference.cache
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160104_Initial.resources
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR Manager.csproj.GenerateResource.Cache

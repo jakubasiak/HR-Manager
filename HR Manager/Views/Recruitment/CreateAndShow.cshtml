@@ -1,0 +1,73 @@
+﻿@model HR_Manager.Models.Recruitment
+
+@{
+    ViewBag.Title = "Rekrutacja";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        @if (Model.JobOffer != null)
+        {
+            <h1>@Html.DisplayFor(model => model.JobOffer.Name)</h1>
+            <p>Lokalizacja: @Html.DisplayFor(model => model.JobOffer.Location)</p>
+            <p>
+                Status rekrutacji:
+                @{
+                    if (Model.JobOffer.Current == true)
+                    {
+                        <text>Aktualna</text>
+                    }
+                    else
+                    {
+                        <text>Zakończona</text>
+                    }
+                }
+            </p>
+                    }
+                    else
+                    {
+                        <h1>Rozpocznij rekrutację</h1>
+                    }
+        <p>Nr. rekr: @Html.DisplayFor(model => model.Id)</p>
+    </div>
+
+    <p>
+        <a href="@Url.Action("Index", "Home")"><button type="button" class="btn btn-default">Strona główna</button></a>
+
+        <a href="@Url.Action("ShowJobOfferList", "Career")"><button type="button" class="btn btn-default">Lista ogłoszeń</button></a>
+    </p>
+    <hr />
+
+    <div class="row">
+        <a href="@Url.Action("AddJobOffer", "Career", new { jobOfferId = Model.Id })">
+            <div class="col-sm-4 tile">
+                <img class="img-responsive center-content" alt="Rozpocznij rekrutacje" src="~/Content/Images/5.png">
+                <h3>Dodaj ogłoszenie</h3>
+                <p>
+                    Dpdaj ogłoszenie i znajdź idealnego kandydata
+                </p>
+            </div>
+        </a>
+
+    </div>
+
+    <hr />
+    <dic class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-target="#RecruitmentEvents"><strong>Przebieg rekrutacji</strong></div>
+            <div class="panel-body collapse in" id="RecruitmentEvents">
+                Tu będą eventy
+            </div>
+        </div>
+    </dic>
+
+    <dic class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-target="#Candidates"><strong>Kandydaci</strong></div>
+            <div class="panel-body collapse in" id="Candidates">
+                Kandydaci
+            </div>
+        </div>
+    </dic>
+</div>

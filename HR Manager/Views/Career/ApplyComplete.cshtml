@@ -1,0 +1,28 @@
+﻿@model bool
+@{
+    ViewBag.Title = "Rekrutacja";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <h1>Rekrutacja</h1>
+    <p>
+        @if (Model)
+        {
+            <h4>Rejestracja zakończona pomyślnie!</h4>
+        }
+        else
+        {
+            <h4>Wystąpił błąd. Spróbuj ponownie za chwilę</h4>
+        }
+
+    </p>
+
+</div>
+
+<p>
+    <a href="@Url.Action("Index", "Home")"><button type="button" class="btn btn-default">Strona główna</button></a>
+
+    <a href="@Url.Action("ShowJobOfferList", "Career")"><button type="button" class="btn btn-default">Lista ogłoszeń</button></a>
+</p>
+

@@ -1,0 +1,125 @@
+﻿@model IEnumerable<HR_Manager.Models.JobOffer>
+
+@{
+    ViewBag.Title = "Lista ogłoszeń";
+}
+
+<div class="container">
+
+    <div class="jumbotron">
+        <h1>Lista ogłoszeń</h1>
+    </div>
+
+    <p>
+        <a href="@Url.Action("Index", "Home")"><button type="button" class="btn btn-default">Strona główna</button></a>
+
+        <a href="@Url.Action("AddJobOffer", "Career")"><button type="button" class="btn btn-default">Dodaj ogłoszenie</button></a>
+    </p>
+    <hr />
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Ogłoszenia aktualne</div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.OfferNumber)</th>
+                        <th>@Html.DisplayNameFor(model => model.Name)</th>
+                        <th>@Html.DisplayNameFor(model => model.Location)</th>
+                        <th>@Html.DisplayNameFor(model => model.Current)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if (item.Current)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OfferNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Location)
+                            </td>
+                            <td>
+                                @{
+                                    if (item.Current == true)
+                                    {
+                                        <text>Aktualne</text>
+                                    }
+                                    else
+                                    {
+                                        <text>Nieaktualne</text>
+                                    }
+                                }
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edytuj", "Edit", new { id = item.OfferNumber }) |
+                                @Html.ActionLink("Pokaż", "Show", new { id = item.OfferNumber }) |
+                                @Html.ActionLink("Usuń", "Delete", new { id = item.OfferNumber })
+                            </td>
+                        </tr>
+                        }
+                       }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Ogłoszenia zakończone</div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.OfferNumber)</th>
+                        <th>@Html.DisplayNameFor(model => model.Name)</th>
+                        <th>@Html.DisplayNameFor(model => model.Location)</th>
+                        <th>@Html.DisplayNameFor(model => model.Current)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if (!item.Current)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OfferNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Location)
+                                </td>
+                                <td>
+                                    @{
+                                        if (item.Current == true)
+                                        {
+                                            <text>Aktualne</text>
+                                        }
+                                        else
+                                        {
+                                            <text>Nieaktualne</text>
+                                        }
+                                    }
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edytuj", "Edit", new { id = item.OfferNumber }) |
+                                    @Html.ActionLink("Pokaż", "Show", new { id = item.OfferNumber }) |
+                                    @Html.ActionLink("Usuń", "Delete", new { id = item.OfferNumber })
+                                </td>
+                            </tr>
+                                            }
+                                        }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+

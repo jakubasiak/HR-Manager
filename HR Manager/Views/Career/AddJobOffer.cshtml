@@ -1,0 +1,115 @@
+﻿@model HR_Manager.Models.JobOffer
+
+@{
+    ViewBag.Title = "Dodaj ogłoszenie";
+}
+<div class="jumbotron">
+    <h1>Dodaj ogłoszenie</h1>
+    <p>
+        <h4 id="JobOfferId">Numer ogłoszenia: @Model.OfferNumber</h4>
+    </p>
+</div>
+
+<p>
+    <a href="@Url.Action("Index", "Home")"><button type="button" class="btn btn-default">Strona główna</button></a>
+
+    <a href="@Url.Action("ShowJobOfferList", "Career")"><button type="button" class="btn btn-default">Lista ogłoszeń</button></a>
+</p>
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, "Nazwa stanowiska", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Location, "Miejsce pracy", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AboutCompany, "Informacje o pracodawcy", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.AboutCompany, new { @class = "form-control span6 col-md-8 jqte-test", rows = "10" })
+                @Html.ValidationMessageFor(model => model.AboutCompany, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JobDescription, "Opis stanowiska", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.JobDescription, new { @class = "form-control multi-input jqte-test" })
+                @Html.ValidationMessageFor(model => model.JobDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Expectations, "Oczekiwania", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Expectations, new { @class = "form-control multi-input jqte-test" })
+                @Html.ValidationMessageFor(model => model.Expectations, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Offer, "Oferujemy", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Offer, new { @class = "form-control multi-input jqte-test" })
+                @Html.ValidationMessageFor(model => model.Offer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.HiddenFor(model => model.OfferNumber, new { @Value = Model.OfferNumber })
+        </div>
+        <div class="form-group">
+            @Html.HiddenFor(model => model.Current, new { @Value = true })
+        </div>
+
+
+        <button type="button" class="btn btn-default btn-lg center-content" data-toggle="modal" data-target="#myModal">Stwórz ogłoszenie</button>
+
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Dodać ogłoszenie?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Czy twoje ogłoszenie jest gotowe do publikacji?</p>
+                        @Html.ValidationSummary()
+                    
+                    </div>
+                    <div class="modal-footer form-group">
+                        <button type="button" class="btn btn-danger space" data-dismiss="modal">Zamknij okno</button>
+                        <input type="submit" class="btn btn-success space" value="Stwórz ogłoszenie" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

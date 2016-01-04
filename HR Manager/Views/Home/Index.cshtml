@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron tile">
+    <h1>HR Manager</h1>
+</div>
+
+<div class="row">
+    
+    <a href="@Url.Action("Create", "Recruitment")">
+    <div class="col-sm-4 tile">
+        <img class="img-responsive center-content" alt="Rozpocznij rekrutacje" src="~/Content/Images/2.png">
+        <h3>Rozpocznij rekrutacje</h3>
+        <p>
+            Rozpocznij nową rekrutację. Stwórz ogłoszenie i śledź postępy w poszukiwaniu najlepszego kandydata
+        </p>
+    </div>
+    </a>
+    <a href="@Url.Action("ShowJobOfferList", "Career")">
+        <div class="col-sm-4 tile">
+            <img class="img-responsive center-content" alt="Baza ogłoszeń" src="~/Content/Images/13.png">
+            <h3>Przeglądaj bazę ogłoszeń</h3>
+            <p>
+                Zarządaj swoimi ogłoszeniami i edytuj ich treść by twoja oferta była zawsze aktualna
+            </p>
+        </div>
+    </a>
+
+        <div class="col-sm-4 tile">
+            <img class="img-responsive center-content" alt="Szukaj kandydata" src="~/Content/Images/4.png">
+            <h3>Wyszukaj kandydata</h3>
+            <p>
+                Przeglądaj swoją bazę personalną by szybo znaleźć odpowienią osobę
+            </p>
+        </div>
+
+</div>
