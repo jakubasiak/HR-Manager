@@ -66,9 +66,7 @@ c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\b
 c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR Manager.dll
 c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR Manager.pdb
-C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160105_Initial.resources
-C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR Manager.csproj.GenerateResource.Cache
-C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160105_1.resources
-C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160105_2.resources
 C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR Manager.csprojResolveAssemblyReference.cache
-C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160105_3.resources
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations.Initial.resources
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR Manager.csproj.GenerateResource.Cache
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160106.resources

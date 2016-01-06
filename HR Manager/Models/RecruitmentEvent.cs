@@ -10,6 +10,7 @@ namespace HR_Manager.Models
     public class RecruitmentEvent: IEntity
     {
         public virtual Recruitment Recruitment { get; set; }
+
         [Display(Name = "Czas")]
         [Required]
         public DateTime Time { get; set; }

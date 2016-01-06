@@ -33,9 +33,9 @@
     </div>
 
     <p>
-        <a href="@Url.Action("Index", "Home")"><button type="button" class="btn btn-default">Strona główna</button></a>
+        <a href="@Url.Action("Index", "Home")" type="button" class="btn btn-default">Strona główna</a>
 
-        <a href="@Url.Action("ShowJobOfferList", "Career")"><button type="button" class="btn btn-default">Lista ogłoszeń</button></a>
+        <a href="@Url.Action("ShowJobOfferList", "Career")" type="button" class="btn btn-default">Lista ogłoszeń</a>
     </p>
     <hr />
 
@@ -69,22 +69,43 @@
         </dic>
         <div class="col-md-2">
             <div class="btn-group-vertical">
-                @Html.ActionLink("Edytuj", "Edit","Career", new { id = Model.JobOffer.OfferNumber }, new { type = "button", @class = "btn btn-lg btn-default" })
-                @Html.ActionLink("Pokaż", "Show","Career", new { id = Model.JobOffer.OfferNumber }, new { type = "button", @class = "btn btn-lg btn-default" })
-                @Html.ActionLink("Usuń", "Delete","Career", new { id = Model.JobOffer.OfferNumber }, new { type = "button", @class = "btn btn-lg btn-default" })
+                @Html.ActionLink("Edytuj", "Edit", "Career", new { id = Model.JobOffer.OfferNumber }, new { type = "button", @class = "btn btn-lg btn-default" })
+                @Html.ActionLink("Pokaż", "Show", "Career", new { id = Model.JobOffer.OfferNumber }, new { type = "button", @class = "btn btn-lg btn-default" })
             </div>
         </div>
 
         <hr />
         <dic class="col-md-6">
+            @using (Ajax.BeginForm("AddRecruitmentEvent", "Recruitment", null, new AjaxOptions
+            {
+                HttpMethod = "POST",
+                UpdateTargetId = "resultTarget"
+            }, new { id = "MyNewNameId" })) // set new Id name for  Form
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>Dodaj zdarzenie</strong>
+                    </div>
+                    <div class="panel-body">
+
+                        @Html.AntiForgeryToken()
+                        <textarea type="text" class="form-control span6 col-md-8" name="text" , rows="10" ></textarea>
+
+                    </div>
+                    <div class="panel-footer">
+                        <input type="submit" class="btn btn-default" value="Dodaj zdarzenie"/>
+                    </div>
+                </div>
+            }
+
             <div class="panel panel-default">
                 <div class="panel-heading" data-toggle="collapse" data-target="#RecruitmentEvents"><strong>Przebieg rekrutacji</strong></div>
                 <div class="panel-body collapse in" id="RecruitmentEvents">
-                    <div>
-                        @foreach(var re in Model.Events)
-                        {
-                            @Html.Partial("_ShowEventView", re);
-                        }
+
+                    <div id="resultTarget">
+
+                            @Html.Partial("_ShowEventView", Model.Events);
+
                     </div>
                 </div>
             </div>

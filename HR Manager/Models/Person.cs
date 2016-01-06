@@ -41,6 +41,6 @@ namespace HR_Manager.Models
         [Display(Name = "Zgoda na kontakt")]
         public bool CanContact { get; set; }
 
-        public virtual IEnumerable<Candidate> Candidates { get; set; }
+        public virtual ICollection<Candidate> Candidates { get; set; }
     }
 }

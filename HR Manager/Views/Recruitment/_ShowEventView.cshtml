@@ -1,9 +1,12 @@
-﻿@model HR_Manager.Models.RecruitmentEvent
-<div class="panel panel-default" id="@Model.Id">
+﻿@model ICollection<HR_Manager.Models.RecruitmentEvent>
+@foreach (var re in Model)
+{
+<div class="panel panel-default" id="@re.Id">
     <div class="panel-heading">
-        <strong>@Model.Author - Utworzono: @Model.Time.ToString("yyyy/mm/d HH:mm:ss")</strong> 
+        <strong>@re.Author - Utworzono: @re.Time.ToString("yyyy/mm/d HH:mm:ss")</strong> 
     </div>
     <div class="panel-body">
-       <p>@Model.Event</p>
+       <p>@re.Event</p>
     </div>
 </div>
+}

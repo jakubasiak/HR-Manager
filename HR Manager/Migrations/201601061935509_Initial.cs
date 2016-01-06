@@ -3,7 +3,7 @@ namespace HR_Manager.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _20160105_Initial : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -116,6 +116,9 @@ namespace HR_Manager.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        Time = c.DateTime(nullable: false),
+                        Author = c.String(nullable: false),
+                        Event = c.String(nullable: false),
                         Recruitment_Id = c.Long(),
                     })
                 .PrimaryKey(t => t.Id)

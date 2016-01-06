@@ -111,7 +111,7 @@ namespace HR_Manager.Models
         }
         public Recruitment GetRecruitmentById(long id)
         {
-            return db.Recruitments.Include(x=>x.JobOffer).First(x=>x.Id==id);
+            return db.Recruitments.Include(x=>x.Events).First(x=>x.Id==id);
         }
 
 

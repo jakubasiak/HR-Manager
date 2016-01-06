@@ -20,9 +20,9 @@ namespace HR_Manager.Models
         [Display(Name = "Dta zakończenia")]
         public DateTime EndTime { get; set; }
         [Display(Name = "Kandydaci")]
-        public virtual IEnumerable<Candidate> Candidate { get; set; }
+        public virtual ICollection<Candidate> Candidate { get; set; }
         [Display(Name = "Zdarzenia")]
-        public virtual IEnumerable<RecruitmentEvent> Events { get; set; }
+        public virtual ICollection<RecruitmentEvent> Events { get; set; }
 
        
     }

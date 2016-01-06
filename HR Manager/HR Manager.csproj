@@ -177,21 +177,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601051154345_20160105_Initial.cs" />
-    <Compile Include="Migrations\201601051154345_20160105_Initial.Designer.cs">
-      <DependentUpon>201601051154345_20160105_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201601061935509_Initial.cs" />
+    <Compile Include="Migrations\201601061935509_Initial.Designer.cs">
+      <DependentUpon>201601061935509_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601051231475_20160105_1.cs" />
-    <Compile Include="Migrations\201601051231475_20160105_1.Designer.cs">
-      <DependentUpon>201601051231475_20160105_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601051418140_20160105_2.cs" />
-    <Compile Include="Migrations\201601051418140_20160105_2.Designer.cs">
-      <DependentUpon>201601051418140_20160105_2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601051735112_20160105_3.cs" />
-    <Compile Include="Migrations\201601051735112_20160105_3.Designer.cs">
-      <DependentUpon>201601051735112_20160105_3.cs</DependentUpon>
+    <Compile Include="Migrations\201601061945190_20160106.cs" />
+    <Compile Include="Migrations\201601061945190_20160106.Designer.cs">
+      <DependentUpon>201601061945190_20160106.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -308,17 +300,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201601051154345_20160105_Initial.resx">
-      <DependentUpon>201601051154345_20160105_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201601061935509_Initial.resx">
+      <DependentUpon>201601061935509_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601051231475_20160105_1.resx">
-      <DependentUpon>201601051231475_20160105_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601051418140_20160105_2.resx">
-      <DependentUpon>201601051418140_20160105_2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601051735112_20160105_3.resx">
-      <DependentUpon>201601051735112_20160105_3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201601061945190_20160106.resx">
+      <DependentUpon>201601061945190_20160106.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

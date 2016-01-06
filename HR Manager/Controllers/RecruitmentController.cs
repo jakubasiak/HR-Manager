@@ -81,6 +81,13 @@ namespace HR_Manager.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult AddRecruitmentEvent(string text)
+        {
+            
+            return PartialView("_ShowEventView");
+        }
+
         // POST: Recruitment/Create
         //[HttpPost]
         //public ActionResult Create(FormCollection collection)
