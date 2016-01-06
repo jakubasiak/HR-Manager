@@ -3,7 +3,7 @@ namespace HR_Manager.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _20160104_Initial : DbMigration
+    public partial class _20160105_Initial : DbMigration
     {
         public override void Up()
         {
@@ -48,6 +48,8 @@ namespace HR_Manager.Migrations
                 c => new
                     {
                         Id = c.Long(nullable: false),
+                        StartTime = c.DateTime(nullable: false),
+                        EndTime = c.DateTime(nullable: false),
                         JobOffer_OfferNumber = c.Long(),
                         Candidate_Id = c.Int(),
                     })
@@ -86,6 +88,16 @@ namespace HR_Manager.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Candidates", t => t.Candidate_Id)
                 .Index(t => t.Candidate_Id);
+            
+            CreateTable(
+                "dbo.ErrorLogs",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Tiem = c.DateTime(nullable: false),
+                        Error = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.GIDOLogs",
@@ -211,6 +223,7 @@ namespace HR_Manager.Migrations
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.RecruitmentEvents");
             DropTable("dbo.GIDOLogs");
+            DropTable("dbo.ErrorLogs");
             DropTable("dbo.CandidateComments");
             DropTable("dbo.JobOffers");
             DropTable("dbo.Recruitments");

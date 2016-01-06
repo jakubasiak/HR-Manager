@@ -16,6 +16,13 @@ namespace HR_Manager.Models
         IEnumerable<JobOffer> GetJobOfferList();
         
         bool SaveRecruitment(Recruitment recr);
+        Recruitment GetRecruitmentById(long id);
+        IEnumerable<Recruitment> GetRecruitmentsList();
+
+        bool SaveRecruitmentEvwnt(RecruitmentEvent ev);
+        bool UpdatateRecruitmentEvent(RecruitmentEvent ev);
+        bool RemoveRecruitmentEvent(int id);
+        RecruitmentEvent GetRecruitmentEventById(int id);
 
         bool SaveFileOnServer(HttpServerUtilityBase server, HttpPostedFileBase file, string folderPath);
 

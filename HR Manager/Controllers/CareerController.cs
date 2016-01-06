@@ -27,7 +27,7 @@ namespace HR_Manager.Controllers
             {
                 dao.SaveJobOffer(model);
 
-                return RedirectToAction("Show", "Career", new { id = model.OfferNumber });
+                return RedirectToAction("Create", "Recruitment", new { id = model.OfferNumber });
             }
             else
             {

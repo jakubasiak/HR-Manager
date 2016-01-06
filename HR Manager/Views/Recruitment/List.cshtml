@@ -1,0 +1,108 @@
+﻿@model List<HR_Manager.Models.RecruitmentListViewModel>
+
+@{
+    ViewBag.Title = "Menadżer rekrutacji";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Menadżer rekrutacji</h1>
+    </div>
+
+    <p>
+        <a href="@Url.Action("Index", "Home")" type="button" class="btn btn-default">Strona główna</a>
+    </p>
+    <hr />
+    @if (Model.Any(x => x.Current == true))
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>Trwające rekrutacje</strong></div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th><strong>Numer rekrutacji</strong></th>
+                            <th><strong>Stanowisko</strong></th>
+                            <th><strong>Lokalizacja</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            if (item.Current)
+                            {
+                                <tr>
+                                    <td class="vert-align">
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+                                    <td class="vert-align">
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td class="vert-align">
+                                        @Html.DisplayFor(modelItem => item.Location)
+                                    </td>
+
+                                    <td class="vert-align">
+                                        <div class="btn-group btn">
+                                            
+                                            @Html.ActionLink("Pokaż", "Show", new { id = item.Id }, new { type = "button", @class = "btn btn-md btn-default" })
+                                            @Html.ActionLink("Usuń", "Delete", new { id = item.Id }, new { type = "button", @class = "btn btn-md btn-default" })
+                                            @Html.ActionLink("Ogłoszenie", "Edit", "Career", new { id = item.OfferNumber }, new { type = "button", @class = "btn btn-md btn-default" })
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+
+    @if (Model.Any(x => x.Current == false))
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading"><strong>Zakończone rekrutacje</strong></div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th><strong>Numer rekrutacji</strong></th>
+                            <th><strong>Stanowisko</strong></th>
+                            <th><strong>Lokalizacja</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            if (!item.Current)
+                            {
+                                <tr>
+                                    <td class="vert-align">
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+                                    <td class="vert-align">
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td class="vert-align">
+                                        @Html.DisplayFor(modelItem => item.Location)
+                                    </td>
+
+                                    <td class="vert-align">
+                                        <div class="btn-group btn">
+                                            
+                                            @Html.ActionLink("Pokaż", "Show", new { id = item.Id }, new { type = "button", @class = "btn btn-md btn-default" })
+                                            @Html.ActionLink("Usuń", "Delete", new { id = item.Id }, new { type = "button", @class = "btn btn-md btn-default" })
+                                            @Html.ActionLink("Ogłoszenie", "Edit", "Career", new { id = item.OfferNumber }, new { type = "button", @class = "btn btn-md btn-default" })
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+
+</div>

@@ -15,10 +15,15 @@ namespace HR_Manager.Models
         public long Id { get; set; }
         [Display(Name = "Id Ogłoszenia")]
         public virtual JobOffer JobOffer { get; set; }
+        [Display(Name = "Dta rozpoczęcia")]
+        public DateTime StartTime { get; set; }
+        [Display(Name = "Dta zakończenia")]
+        public DateTime EndTime { get; set; }
         [Display(Name = "Kandydaci")]
         public virtual IEnumerable<Candidate> Candidate { get; set; }
         [Display(Name = "Zdarzenia")]
         public virtual IEnumerable<RecruitmentEvent> Events { get; set; }
 
+       
     }
 }

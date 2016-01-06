@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace HR_Manager.Controllers
 {
+
     public class RecruitmentController : BaseController
     {
         //// GET: Recruitment
@@ -15,19 +16,69 @@ namespace HR_Manager.Controllers
         //    return View();
         //}
 
-        //// GET: Recruitment/Details/5
-        //public ActionResult Details(int id)
-        //{
-        //    return View();
-        //}
+        //GET: Recruitment/Show/5
+        public ActionResult Show(long id)
+        {
+            Recruitment model = dao.GetRecruitmentById(id);
+
+            return View("CreateAndShow", model);
+        }
+
+        public ActionResult List()
+        {
+            IEnumerable<Recruitment> recr = dao.GetRecruitmentsList();
+            List<RecruitmentListViewModel> model = new List<RecruitmentListViewModel>();
+            foreach(var r in recr)
+            {
+                RecruitmentListViewModel rlvm = new RecruitmentListViewModel()
+                {
+                    Id = r.Id,
+                    StartTime = r.StartTime,
+                    EndTime = r.EndTime,
+                    OfferNumber = r.JobOffer.OfferNumber,
+                    Name = r.JobOffer.Name,
+                    Location = r.JobOffer.Location,
+                    Current = r.JobOffer.Current,
+                };
+                model.Add(rlvm);
+            }
+            return View(model);
+        }
 
         // GET: Recruitment/Create
-        public ActionResult Create()
+        public ActionResult Create(long? id)
         {
-            Recruitment recr = new Recruitment();
-            recr.Id = Utils.Utils.GenerateJobOfferId();
+            if (id == null)
+            {
+                Recruitment recr = new Recruitment();
+                recr.Id = Utils.Utils.GenerateJobOfferId();
 
-            return View("CreateAndShow", recr);
+                return View("CreateAndShow", recr);
+            }
+            else
+            {
+                Recruitment recr = new Recruitment()
+                {
+                    Id = Utils.Utils.GenerateJobOfferId(),
+                    JobOffer = dao.GetJobOfferByOfferNumber((long)id),
+                    StartTime = DateTime.Now,
+                    Candidate = new List<Candidate>(),
+                    Events = new List<RecruitmentEvent>(),
+                    EndTime = DateTime.MaxValue,
+                };
+                RecruitmentEvent ev = new RecruitmentEvent()
+                {
+                    Event = "Rozpoczęcie rekrutacji",
+                    Time = DateTime.Now,
+                    Author = "HR Manager",
+                    Recruitment = recr,                   
+                };
+
+                ((List<RecruitmentEvent>)recr.Events).Add(ev);
+                dao.SaveRecruitment(recr);
+
+                return View("CreateAndShow", recr);
+            }
         }
 
         // POST: Recruitment/Create

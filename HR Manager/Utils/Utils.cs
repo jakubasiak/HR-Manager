@@ -11,8 +11,8 @@ namespace HR_Manager.Utils
         public static long GenerateJobOfferId()
         {
             DateTime date = DateTime.Now;
-            long id = date.Year + date.Month+ date.Day+ date.Hour+ date.Second+date.Millisecond;
-            
+            long id = 1000000000000*date.Year + 1000000*date.Month+ 10000*date.Day+ 100 * date.Hour+ 10*date.Second+date.Millisecond;
+
             return id;
         }
 

@@ -71,3 +71,10 @@ input[readonly] {
   background-color: white !important;
   cursor: text !important;
 }
+td, th {
+    text-align:center;
+    vertical-align:central;
+}
+.table tbody>tr>td.vert-align{
+    vertical-align: middle;
+}

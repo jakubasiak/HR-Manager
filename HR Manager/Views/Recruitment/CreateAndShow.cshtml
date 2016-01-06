@@ -39,35 +39,65 @@
     </p>
     <hr />
 
-    <div class="row">
-        <a href="@Url.Action("AddJobOffer", "Career", new { jobOfferId = Model.Id })">
-            <div class="col-sm-4 tile">
-                <img class="img-responsive center-content" alt="Rozpocznij rekrutacje" src="~/Content/Images/5.png">
-                <h3>Dodaj ogłoszenie</h3>
-                <p>
-                    Dpdaj ogłoszenie i znajdź idealnego kandydata
-                </p>
+    @if (Model.JobOffer == null)
+    {
+        <div class="row">
+            <a href="@Url.Action("AddJobOffer", "Career", new { jobOfferId = Model.Id })">
+                <div class="col-sm-4 tile">
+                    <img class="img-responsive center-content" alt="Rozpocznij rekrutacje" src="~/Content/Images/5.png">
+                    <h3>Dodaj ogłoszenie</h3>
+                    <p>
+                        Dpdaj ogłoszenie i znajdź idealnego kandydata
+                    </p>
+                </div>
+            </a>
+
+        </div>
+    }
+    else
+    {
+
+        <dic class="col-md-10">
+            <div class="panel panel-default">
+                <div class="panel-heading" data-toggle="collapse" data-target="#JobOfferInfo"><strong>Informacje o ogłoszeniu</strong></div>
+                <div class="panel-body collapse in" id="JobOfferInfo">
+                    <h1>@Html.DisplayFor(model => model.JobOffer.Name)</h1>
+                    <p>Lokalizacja: @Html.DisplayFor(model => model.JobOffer.Location)</p>
+                    <div class="panel-body collapse in" id="JobDescriptionPanel">@Html.Raw(Model.JobOffer.JobDescription)</div>
+                </div>
             </div>
-        </a>
-
-    </div>
-
-    <hr />
-    <dic class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading" data-toggle="collapse" data-target="#RecruitmentEvents"><strong>Przebieg rekrutacji</strong></div>
-            <div class="panel-body collapse in" id="RecruitmentEvents">
-                Tu będą eventy
+        </dic>
+        <div class="col-md-2">
+            <div class="btn-group-vertical">
+                @Html.ActionLink("Edytuj", "Edit","Career", new { id = Model.JobOffer.OfferNumber }, new { type = "button", @class = "btn btn-lg btn-default" })
+                @Html.ActionLink("Pokaż", "Show","Career", new { id = Model.JobOffer.OfferNumber }, new { type = "button", @class = "btn btn-lg btn-default" })
+                @Html.ActionLink("Usuń", "Delete","Career", new { id = Model.JobOffer.OfferNumber }, new { type = "button", @class = "btn btn-lg btn-default" })
             </div>
         </div>
-    </dic>
 
-    <dic class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading" data-toggle="collapse" data-target="#Candidates"><strong>Kandydaci</strong></div>
-            <div class="panel-body collapse in" id="Candidates">
-                Kandydaci
+        <hr />
+        <dic class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading" data-toggle="collapse" data-target="#RecruitmentEvents"><strong>Przebieg rekrutacji</strong></div>
+                <div class="panel-body collapse in" id="RecruitmentEvents">
+                    <div>
+                        @foreach(var re in Model.Events)
+                        {
+                            @Html.Partial("_ShowEventView", re);
+                        }
+                    </div>
+                </div>
             </div>
-        </div>
-    </dic>
+        </dic>
+
+        <dic class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading" data-toggle="collapse" data-target="#Candidates"><strong>Kandydaci</strong></div>
+                <div class="panel-body collapse in" id="Candidates">
+                    Kandydaci
+                </div>
+            </div>
+        </dic>
+
+    }
 </div>

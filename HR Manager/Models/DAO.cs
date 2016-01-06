@@ -31,7 +31,7 @@ namespace HR_Manager.Models
             }
             catch (Exception)
             {
-                WriteErrorLog("Nieudany zapis ogłoszenia do bazy danych " + DateTime.Now);
+                //WriteErrorLog("Nieudany zapis ogłoszenia do bazy danych " + DateTime.Now);
                 return false;
             }
 
@@ -45,7 +45,7 @@ namespace HR_Manager.Models
                 return true;
             }catch
             {
-                WriteErrorLog("Nieudana aktualizacja ogłoszenia " + DateTime.Now);
+                //WriteErrorLog("Nieudana aktualizacja ogłoszenia " + DateTime.Now);
                 return false;
             }
         }
@@ -62,7 +62,7 @@ namespace HR_Manager.Models
             }
             catch
             {
-                WriteErrorLog("Nieudany usunięcie ogłoszenia " + DateTime.Now);
+                //WriteErrorLog("Nieudany usunięcie ogłoszenia " + DateTime.Now);
                 return false;
             }
 
@@ -87,17 +87,94 @@ namespace HR_Manager.Models
         {
             try
             {
+                foreach (var ev in recr.Events)
+                {
+                    if(GetRecruitmentEventById(ev.Id)==null)
+                    {
+                        SaveRecruitmentEvwnt(ev);
+                    }
+                    else
+                    {
+                        UpdatateRecruitmentEvent(ev);
+                    }
+                }
+
                 db.Recruitments.Add(recr);
                 db.SaveChanges();
                 return true;
             }
             catch (Exception)
             {
-                WriteErrorLog("Nieudany zapis rekrutacji " + DateTime.Now);
+                //WriteErrorLog("Nieudany zapis rekrutacji");
+                return false;
+            }
+        }
+        public Recruitment GetRecruitmentById(long id)
+        {
+            return db.Recruitments.Include(x=>x.JobOffer).First(x=>x.Id==id);
+        }
+
+
+
+        public IEnumerable<Recruitment> GetRecruitmentsList()
+        {
+            return db.Recruitments;
+        }
+
+        #endregion
+
+        #region RecruitmentEvent
+        public bool SaveRecruitmentEvwnt(RecruitmentEvent ev)
+        {
+            try
+            {
+                db.RecruitmentEvents.Add(ev);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                //WriteErrorLog("Nieudany zapis ogłoszenia do bazy danych " + DateTime.Now);
                 return false;
             }
         }
 
+        public bool UpdatateRecruitmentEvent(RecruitmentEvent ev)
+        {
+            try
+            {
+                db.Entry(ev).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                //WriteErrorLog("Nieudana aktualizacja ogłoszenia " + DateTime.Now);
+                return false;
+            }
+        }
+        public bool RemoveRecruitmentEvent(int id)
+        {
+            try
+            {
+                RecruitmentEvent re = db.RecruitmentEvents.Find(id);
+                db.RecruitmentEvents.Remove(re);
+                db.SaveChanges();
+                return true;
+
+            }
+            catch
+            {
+                //WriteErrorLog("Nieudany usunięcie ogłoszenia " + DateTime.Now);
+                return false;
+            }
+
+        }
+
+        public RecruitmentEvent GetRecruitmentEventById(int id)
+        {
+            return db.RecruitmentEvents.Find(id);
+        }
         #endregion
 
         #region Pozostałe publiczne
@@ -149,11 +226,9 @@ namespace HR_Manager.Models
 
         private void WriteErrorLog(string errorInfo)
         {
-            using (System.IO.StreamWriter file =
-            new System.IO.StreamWriter(AppConfig.AppErrorLog, true))
-            {
-                file.WriteLine(errorInfo);
-            }
+            ErrorLog el = new ErrorLog() { Tiem = DateTime.Now, Error = errorInfo };
+            db.Errors.Add(el);
+            db.SaveChanges();
         }
 
         protected void Dispose(bool disposing)

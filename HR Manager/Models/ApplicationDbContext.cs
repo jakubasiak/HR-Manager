@@ -16,6 +16,7 @@ namespace HR_Manager.Models
         public DbSet<CandidateComment> Commments { get; set; }
         public DbSet<Person> People { get; set; }
         public DbSet<GIDOLog> GiDOlog { get; set; }
+        public DbSet<HR_Manager.Utils.ErrorLog> Errors { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
