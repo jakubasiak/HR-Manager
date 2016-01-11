@@ -11,7 +11,10 @@ namespace HR_Manager.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if(User.Identity.IsAuthenticated)
+                return View();
+            else
+                return View("PublicIndex");
         }
 
         public ActionResult About()

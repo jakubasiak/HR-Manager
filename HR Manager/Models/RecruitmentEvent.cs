@@ -14,12 +14,20 @@ namespace HR_Manager.Models
         [Display(Name = "Czas")]
         [Required]
         public DateTime Time { get; set; }
+
         [Display(Name = "Autor")]
         [Required]
         [DefaultValue("HR Manager")]
         public string Author { get; set; }
+
+        [Required]
+        [DefaultValue("HR Manager")]
+        [Display(Name = "Id Autora")]
+        public string AuthorId { get; set; }
+
         [Display(Name = "Treść")]
         [Required]
         public string Event { get; set; }
+
     }
 }

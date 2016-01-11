@@ -1,9 +1,9 @@
 ﻿@model ICollection<HR_Manager.Models.RecruitmentEvent>
-@foreach (var re in Model)
+@foreach (var re in Model.Reverse())
 {
 <div class="panel panel-default" id="@re.Id">
     <div class="panel-heading">
-        <strong>@re.Author - Utworzono: @re.Time.ToString("yyyy/mm/d HH:mm:ss")</strong> 
+        <strong>@re.Author - Utworzono: @re.Time.ToString("yyyy/MM/d HH:mm:ss")</strong> 
     </div>
     <div class="panel-body">
        <p>@re.Event</p>

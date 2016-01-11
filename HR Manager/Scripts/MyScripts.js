@@ -19,7 +19,6 @@
         });
 
 
-
 });
 
 $(document).on('change', '.btn-file :file', function () {
@@ -28,3 +27,7 @@ $(document).on('change', '.btn-file :file', function () {
         label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
     input.trigger('fileselect', [numFiles, label]);
 });
+
+function clear() {
+    $("#textInput").val("");
+};

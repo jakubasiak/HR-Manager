@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace HR_Manager.Controllers
 {
+    [Authorize]
     public class CareerController : BaseController
     {
         public ActionResult AddJobOffer(long jobOfferId)
@@ -35,6 +36,7 @@ namespace HR_Manager.Controllers
             }
 
         }
+        [AllowAnonymous]
         public ActionResult Show(long? id)
         {
             if (id != null)

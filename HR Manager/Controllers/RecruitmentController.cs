@@ -1,13 +1,16 @@
 ﻿using HR_Manager.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace HR_Manager.Controllers
 {
-
+    [Authorize]
     public class RecruitmentController : BaseController
     {
         //// GET: Recruitment
@@ -71,6 +74,7 @@ namespace HR_Manager.Controllers
                     Event = "Rozpoczęcie rekrutacji",
                     Time = DateTime.Now,
                     Author = "HR Manager",
+                    AuthorId = "HR Manager",
                     Recruitment = recr,                   
                 };
 
@@ -82,10 +86,26 @@ namespace HR_Manager.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddRecruitmentEvent(string text)
+        public async Task<ActionResult> AddRecruitmentEvent(string text, long recruitmentId)
         {
-            
-            return PartialView("_ShowEventView");
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+            Recruitment recr = dao.GetRecruitmentById(recruitmentId);
+
+            RecruitmentEvent re = new RecruitmentEvent()
+            {
+                Author = user.FirstName + " " + user.Surname,
+                AuthorId = user.Id,
+                Recruitment = recr,
+                Time = DateTime.Now,
+                Event = text,
+            };
+
+            recr.Events.Add(re);
+            dao.SaveRecruitmentEvwnt(re);
+
+
+            return PartialView("_ShowEventView", recr.Events);
         }
 
         // POST: Recruitment/Create

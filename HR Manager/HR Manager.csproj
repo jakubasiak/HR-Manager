@@ -185,6 +185,18 @@
     <Compile Include="Migrations\201601061945190_20160106.Designer.cs">
       <DependentUpon>201601061945190_20160106.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601091652134_20160109.cs" />
+    <Compile Include="Migrations\201601091652134_20160109.Designer.cs">
+      <DependentUpon>201601091652134_20160109.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601101928547_20160110.cs" />
+    <Compile Include="Migrations\201601101928547_20160110.Designer.cs">
+      <DependentUpon>201601101928547_20160110.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601111734377_20160111.cs" />
+    <Compile Include="Migrations\201601111734377_20160111.Designer.cs">
+      <DependentUpon>201601111734377_20160111.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -231,6 +243,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-te-1.4.0.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -283,6 +297,7 @@
     <Content Include="Views\Recruitment\CreateAndShow.cshtml" />
     <Content Include="Views\Recruitment\_ShowEventView.cshtml" />
     <Content Include="Views\Recruitment\List.cshtml" />
+    <Content Include="Views\Home\PublicIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\CV\" />
@@ -305,6 +320,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601061945190_20160106.resx">
       <DependentUpon>201601061945190_20160106.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601091652134_20160109.resx">
+      <DependentUpon>201601091652134_20160109.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601101928547_20160110.resx">
+      <DependentUpon>201601101928547_20160110.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601111734377_20160111.resx">
+      <DependentUpon>201601111734377_20160111.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

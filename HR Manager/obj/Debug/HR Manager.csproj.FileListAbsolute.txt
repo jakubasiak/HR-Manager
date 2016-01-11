@@ -70,3 +70,6 @@ C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\o
 C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations.Initial.resources
 C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR Manager.csproj.GenerateResource.Cache
 C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160106.resources
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160109.resources
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160110.resources
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160111.resources

@@ -29,13 +29,13 @@ namespace HR_Manager.Models
         public string Provider { get; set; }
 
         [Required]
-        [Display(Name = "Code")]
+        [Display(Name = "Kod")]
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
-        [Display(Name = "Remember this browser?")]
+        [Display(Name = "Zapamiętać tę przeglądarkę?")]
         public bool RememberBrowser { get; set; }
-
+        [Display(Name ="Zapamiętaj mnie")]
         public bool RememberMe { get; set; }
     }
 
@@ -55,10 +55,10 @@ namespace HR_Manager.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Hasło")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Zapamiętaj mnie?")]
         public bool RememberMe { get; set; }
     }
 
@@ -70,15 +70,24 @@ namespace HR_Manager.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} musi mnieć co najmniej {2} znaków długości.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Hasło")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Potwierdź hasło")]
+        [Compare("Password", ErrorMessage = "Hasło i jego potwierdzenie nie są zgodne")]
         public string ConfirmPassword { get; set; }
+        [Required(ErrorMessage = "Imię jest wymagane")]
+        [Display(Name = "Imię")]
+        public string FirstName { get; set; }
+        [Required(ErrorMessage ="Nazwisko jest wymagane")]
+        [Display(Name = "Nazwisko")]
+        public string Surname { get; set; }
+        [Required(ErrorMessage = "Kod rejestracji jest wymagany")]
+        [Display(Name = "Kod rejstracji")]
+        public string ApplicationRegisterUserCode { get; set; }
     }
 
     public class ResetPasswordViewModel
@@ -89,14 +98,14 @@ namespace HR_Manager.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} musi mnieć co najmniej {2} znaków długości.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Hasło")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Potwierdź hasło")]
+        [Compare("Password", ErrorMessage = "Hasło i jego potwierdzenie nie są zgodne")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

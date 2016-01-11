@@ -56,69 +56,82 @@
     }
     else
     {
-
-        <dic class="col-md-10">
-            <div class="panel panel-default">
-                <div class="panel-heading" data-toggle="collapse" data-target="#JobOfferInfo"><strong>Informacje o ogłoszeniu</strong></div>
-                <div class="panel-body collapse in" id="JobOfferInfo">
-                    <h1>@Html.DisplayFor(model => model.JobOffer.Name)</h1>
-                    <p>Lokalizacja: @Html.DisplayFor(model => model.JobOffer.Location)</p>
-                    <div class="panel-body collapse in" id="JobDescriptionPanel">@Html.Raw(Model.JobOffer.JobDescription)</div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#JobOfferInfo"><strong>Informacje o ogłoszeniu</strong></div>
+                    <div class="panel-body collapse in" id="JobOfferInfo">
+                        <h1>@Html.DisplayFor(model => model.JobOffer.Name)</h1>
+                        <p>Lokalizacja: @Html.DisplayFor(model => model.JobOffer.Location)</p>
+                        <div class="panel-body collapse in" id="JobDescriptionPanel">@Html.Raw(Model.JobOffer.JobDescription)</div>
+                    </div>
                 </div>
+
+                <input type="text" class="form-control" value="@Url.Action("Show","Career", new { id = Model.JobOffer.OfferNumber}, Request.Url.Scheme)">
+
             </div>
-        </dic>
-        <div class="col-md-2">
-            <div class="btn-group-vertical">
-                @Html.ActionLink("Edytuj", "Edit", "Career", new { id = Model.JobOffer.OfferNumber }, new { type = "button", @class = "btn btn-lg btn-default" })
-                @Html.ActionLink("Pokaż", "Show", "Career", new { id = Model.JobOffer.OfferNumber }, new { type = "button", @class = "btn btn-lg btn-default" })
+            <div class="col-md-2">
+                <div class="btn-group-vertical">
+                    @Html.ActionLink("Edytuj", "Edit", "Career", new { id = Model.JobOffer.OfferNumber }, new { type = "button", @class = "btn btn-lg btn-default" })
+                    @Html.ActionLink("Pokaż", "Show", "Career", new { id = Model.JobOffer.OfferNumber }, new { type = "button", @class = "btn btn-lg btn-default" })
+                </div>
             </div>
         </div>
+        <div class="row">
+            <hr />
+            <dic class="col-md-6">
 
-        <hr />
-        <dic class="col-md-6">
-            @using (Ajax.BeginForm("AddRecruitmentEvent", "Recruitment", null, new AjaxOptions
-            {
-                HttpMethod = "POST",
-                UpdateTargetId = "resultTarget"
-            }, new { id = "MyNewNameId" })) // set new Id name for  Form
-            {
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <strong>Dodaj zdarzenie</strong>
-                    </div>
-                    <div class="panel-body">
+                    @using (Ajax.BeginForm("AddRecruitmentEvent", "Recruitment", null, new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    UpdateTargetId = "resultTarget",
+                    OnSuccess = "clear"
 
-                        @Html.AntiForgeryToken()
-                        <textarea type="text" class="form-control span6 col-md-8" name="text" , rows="10" ></textarea>
 
-                    </div>
-                    <div class="panel-footer">
-                        <input type="submit" class="btn btn-default" value="Dodaj zdarzenie"/>
+                }))
+                {
+                        <div class="panel-heading">
+                            <strong>Dodaj zdarzenie</strong>
+                        </div>
+                        <div class="panel-body">
+
+                            @Html.AntiForgeryToken()
+                            <textarea type="text" class="form-control span6 col-md-8" name="text" id="textInput" , rows="10"></textarea>
+                            <input type="hidden" value="@Model.Id" name="recruitmentId" />
+
+                        </div>
+                        <div class="panel-footer">
+                            <input type="submit" class="btn btn-default" value="Dodaj zdarzenie" id="eventButton" />
+                        </div>
+                    }
+                </div>
+
+                @if (Model.Events.Any(x => x.Id != null))
+                {
+                <div class="panel panel-default">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#RecruitmentEvents"><strong>Przebieg rekrutacji</strong></div>
+                    <div class="panel-body collapse in" id="RecruitmentEvents">
+
+                        <div id="resultTarget">
+
+                            @Html.Partial("_ShowEventView", Model.Events)
+
+                        </div>
                     </div>
                 </div>
-            }
+                }
+            </dic>
 
-            <div class="panel panel-default">
-                <div class="panel-heading" data-toggle="collapse" data-target="#RecruitmentEvents"><strong>Przebieg rekrutacji</strong></div>
-                <div class="panel-body collapse in" id="RecruitmentEvents">
-
-                    <div id="resultTarget">
-
-                            @Html.Partial("_ShowEventView", Model.Events);
-
+            <dic class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading" data-toggle="collapse" data-target="#Candidates"><strong>Kandydaci</strong></div>
+                    <div class="panel-body collapse in" id="Candidates">
+                        Kandydaci
                     </div>
                 </div>
-            </div>
-        </dic>
-
-        <dic class="col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading" data-toggle="collapse" data-target="#Candidates"><strong>Kandydaci</strong></div>
-                <div class="panel-body collapse in" id="Candidates">
-                    Kandydaci
-                </div>
-            </div>
-        </dic>
+            </dic>
+        </div>
 
     }
-</div>
+

@@ -11,6 +11,7 @@ namespace HR_Manager.Utils
         private static string _CVFolderRelative = ConfigurationManager.AppSettings["CVFolder"];
         private static string _LettersFolderRelative = ConfigurationManager.AppSettings["LettersFolder"];
         private static string _PhotosFolderRelative = ConfigurationManager.AppSettings["PhotosFolder"];
+        private static string _ApplicationRegisterUserCode = ConfigurationManager.AppSettings["ApplicationRegisterUserCode"];
 
 
         public static string CVFolderRelative
@@ -32,6 +33,13 @@ namespace HR_Manager.Utils
             get
             {
                 return _PhotosFolderRelative;
+            }
+        }
+        public static string ApplicationRegisterUserCode
+        {
+            get
+            {
+                return _ApplicationRegisterUserCode;
             }
         }
 

@@ -15,6 +15,9 @@
     </p>
     <hr />
 
+@if (Model.Any(x => x.Current == true))
+{
+
     <div class="panel panel-default">
         <div class="panel-heading"><strong>Ogłoszenia aktualne</strong></div>
         <div class="panel-body">
@@ -68,7 +71,9 @@
             </table>
         </div>
     </div>
-
+    }
+@if (Model.Any(x => x.Current == false))
+{
     <div class="panel panel-default">
         <div class="panel-heading"><strong>Ogłoszenia zakończone</strong></div>
         <div class="panel-body">
@@ -123,4 +128,5 @@
 
         </div>
     </div>
+    }
 </div>
