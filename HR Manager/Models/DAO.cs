@@ -114,6 +114,38 @@ namespace HR_Manager.Models
             return db.Recruitments.Include(x=>x.Events).First(x=>x.Id==id);
         }
 
+        public bool RemoveRecruitmentById(long id)
+        {
+            try
+            {
+                Recruitment r = db.Recruitments.Find(id);
+                foreach (RecruitmentEvent item in r.Events)
+                {
+                    db.RecruitmentEvents.Remove(item);
+                }
+                foreach (Candidate item in r.Candidate)
+                {
+                    item.Person = null;
+                    //foreach (CandidateComment item2 in item.Comments)
+                    //{
+                    //    db.Commments.Remove(item2);
+                    //}
+                    db.Candidates.Remove(item);
+                }
+
+                db.Recruitments.Remove(r);
+                db.SaveChanges();
+
+                return true;
+
+            }
+            catch(Exception e)
+            {
+                string s = e.StackTrace;
+                //WriteErrorLog("Nieudany usunięcie ogłoszenia " + DateTime.Now);
+                return false;
+            }
+        }
 
 
         public IEnumerable<Recruitment> GetRecruitmentsList()

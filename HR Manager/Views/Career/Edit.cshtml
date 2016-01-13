@@ -13,9 +13,11 @@
 </div>
 
 <p>
-    <a href="@Url.Action("Index", "Home")"><button type="button" class="btn btn-default">Strona główna</button></a>
+    <a href="@Url.Action("Index", "Home")" type="button" class="btn btn-default">Strona główna</a>
 
-    <a href="@Url.Action("ShowJobOfferList", "Career")"><button type="button" class="btn btn-default">Lista ogłoszeń</button></a>
+    <a href="@Url.Action("Show", "Recruitment", new {id = Model.OfferNumber })" type="button" class="btn btn-default">Rekrutacja</a>
+
+    <a href="@Url.Action("ShowJobOfferList", "Career")" type="button" class="btn btn-default">Lista ogłoszeń</a>
 </p>
 
 

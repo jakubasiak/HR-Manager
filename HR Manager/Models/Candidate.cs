@@ -26,6 +26,6 @@ namespace HR_Manager.Models
 
 
         public virtual ICollection<Recruitment> Recruitments { get; set; }
-        public virtual ICollection<Candidate> Comments { get; set; }
+
     }
 }

@@ -1,0 +1,25 @@
+﻿@model HR_Manager.Models.RecruitmentEvent
+@using (Ajax.BeginForm("EditRecruitmentEvent", "Recruitment", new
+{ eventId = Model.Id }, new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = ""+Model.Id,
+    InsertionMode = InsertionMode.Replace,
+
+
+
+}))
+{
+    <div class="panel-heading">
+        <strong>Edytuj zdarzenie</strong>
+    </div>
+    <div class="panel-body">
+
+        @Html.AntiForgeryToken()
+        <textarea type="text" class="form-control span6 col-md-8" name="text" rows="10" >@Model.Event</textarea>
+
+    </div>
+    <div class="panel-footer">
+           <input type="submit" class="btn btn-default" value="Zapisz" id="eventButton" />
+    </div>
+}

@@ -16,6 +16,7 @@ namespace HR_Manager.Models
         IEnumerable<JobOffer> GetJobOfferList();
         
         bool SaveRecruitment(Recruitment recr);
+        bool RemoveRecruitmentById(long id);
         Recruitment GetRecruitmentById(long id);
         IEnumerable<Recruitment> GetRecruitmentsList();
 

@@ -1,12 +1,16 @@
 ﻿@model ICollection<HR_Manager.Models.RecruitmentEvent>
 @foreach (var re in Model.Reverse())
 {
-<div class="panel panel-default" id="@re.Id">
-    <div class="panel-heading">
-        <strong>@re.Author - Utworzono: @re.Time.ToString("yyyy/MM/d HH:mm:ss")</strong> 
+    <div class="panel panel-default" id="@re.Id">
+        <div class="panel-heading">
+            <strong>@re.Author - Dodano: @re.Time.ToString("yyyy/MM/d HH:mm:ss")</strong>
+            <div style="display:inline; float:right;">
+                @Ajax.ActionLink("Edytuj", "EditRecruitmentEvent", "Recruitment", new { eventId = re.Id }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = re.Id.ToString(), InsertionMode = InsertionMode.Replace }) |
+                @Ajax.ActionLink("Usuń", "DeleteRecruitmentEvent", "Recruitment", new { eventId = re.Id }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = re.Id.ToString(), InsertionMode = InsertionMode.Replace, OnSuccess = String.Format("panelRemove({0})", re.Id) })
+            </div>
+        </div>
+        <div class="panel-body">
+            <p>@re.Event</p>
+        </div>
     </div>
-    <div class="panel-body">
-       <p>@re.Event</p>
-    </div>
-</div>
 }

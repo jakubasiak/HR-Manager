@@ -62,7 +62,7 @@ namespace HR_Manager.Controllers
             {
                 Recruitment recr = new Recruitment()
                 {
-                    Id = Utils.Utils.GenerateJobOfferId(),
+                    Id = (long)id,
                     JobOffer = dao.GetJobOfferByOfferNumber((long)id),
                     StartTime = DateTime.Now,
                     Candidate = new List<Candidate>(),
@@ -83,6 +83,12 @@ namespace HR_Manager.Controllers
 
                 return View("CreateAndShow", recr);
             }
+        }
+        public ActionResult Delete(long id)
+        {
+            dao.RemoveRecruitmentById(id);
+
+            return RedirectToAction("Index","Home");
         }
 
         [HttpPost]
@@ -106,6 +112,28 @@ namespace HR_Manager.Controllers
 
 
             return PartialView("_ShowEventView", recr.Events);
+        }
+        public async Task<ActionResult> EditRecruitmentEvent(int eventId)
+        {
+            RecruitmentEvent ev = dao.GetRecruitmentEventById(eventId);
+
+            return PartialView("_EditRecruitmentEvent", ev);
+        }
+        [HttpPost]
+        public async Task<ActionResult> EditRecruitmentEvent(int eventId, string text)
+        {
+            RecruitmentEvent ev = dao.GetRecruitmentEventById(eventId);
+            ev.Event = text;
+            dao.UpdatateRecruitmentEvent(ev);
+
+            return PartialView("_SingleRecruitmentEvent", ev);
+        }
+        [HttpPost]
+        public async Task<ActionResult> DeleteRecruitmentEvent(int eventId)
+        {
+            dao.RemoveRecruitmentEvent(eventId);
+
+            return new EmptyResult();
         }
 
         // POST: Recruitment/Create

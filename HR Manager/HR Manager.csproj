@@ -197,6 +197,10 @@
     <Compile Include="Migrations\201601111734377_20160111.Designer.cs">
       <DependentUpon>201601111734377_20160111.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601131959250_20160113.cs" />
+    <Compile Include="Migrations\201601131959250_20160113.Designer.cs">
+      <DependentUpon>201601131959250_20160113.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -298,6 +302,8 @@
     <Content Include="Views\Recruitment\_ShowEventView.cshtml" />
     <Content Include="Views\Recruitment\List.cshtml" />
     <Content Include="Views\Home\PublicIndex.cshtml" />
+    <Content Include="Views\Recruitment\_EditRecruitmentEvent.cshtml" />
+    <Content Include="Views\Recruitment\_SingleRecruitmentEvent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\CV\" />
@@ -329,6 +335,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601111734377_20160111.resx">
       <DependentUpon>201601111734377_20160111.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601131959250_20160113.resx">
+      <DependentUpon>201601131959250_20160113.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

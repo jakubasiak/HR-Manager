@@ -1,0 +1,12 @@
+﻿@model HR_Manager.Models.RecruitmentEvent
+
+<div class="panel-heading">
+    <strong>@Model.Author - Dodano: @Model.Time.ToString("yyyy/MM/d HH:mm:ss")</strong>
+    <div style="display:inline; float:right;">
+        @Ajax.ActionLink("Edytuj", "EditRecruitmentEvent", "Recruitment", new { eventId = Model.Id }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = Model.Id.ToString(), InsertionMode = InsertionMode.Replace }) |
+        @Ajax.ActionLink("Usuń", "DeleteRecruitmentEvent", "Recruitment", new { eventId = Model.Id }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = Model.Id.ToString(), InsertionMode = InsertionMode.Replace, OnSuccess = String.Format("panelRemove({0})", Model.Id) })
+    </div>
+</div>
+<div class="panel-body">
+    <p>@Model.Event</p>
+</div>

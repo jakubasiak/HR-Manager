@@ -31,3 +31,7 @@ $(document).on('change', '.btn-file :file', function () {
 function clear() {
     $("#textInput").val("");
 };
+function panelRemove(arg) {
+    $("#"+arg).remove();
+
+};
