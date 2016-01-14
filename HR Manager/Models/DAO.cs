@@ -50,23 +50,29 @@ namespace HR_Manager.Models
             }
         }
 
-        public bool RemoveJobOffer(long id)
-        {
-            try
-            {
-                JobOffer jo = db.JobOffers.Find(id);
-                db.JobOffers.Remove(jo);
-                db.SaveChanges();
-                return true;
+        //public bool RemoveJobOffer(long id)
+        //{
+        //    try
+        //    {
+        //        Recruitment r = db.Recruitments.Find(id);
+        //        if(r!=null)
+        //        {
+        //            r.JobOffer = null;
+        //        }
 
-            }
-            catch
-            {
-                //WriteErrorLog("Nieudany usunięcie ogłoszenia " + DateTime.Now);
-                return false;
-            }
+        //        JobOffer jo = db.JobOffers.Find(id);
+        //        db.JobOffers.Remove(jo);
+        //        db.SaveChanges();
+        //        return true;
 
-        }
+        //    }
+        //    catch
+        //    {
+        //        //WriteErrorLog("Nieudany usunięcie ogłoszenia " + DateTime.Now);
+        //        return false;
+        //    }
+
+        //}
 
         public JobOffer GetJobOfferByOfferNumber(long id)
         {
@@ -118,20 +124,10 @@ namespace HR_Manager.Models
         {
             try
             {
+                JobOffer jo = GetJobOfferByOfferNumber(id);
+                db.JobOffers.Remove(jo);
+
                 Recruitment r = db.Recruitments.Find(id);
-                foreach (RecruitmentEvent item in r.Events)
-                {
-                    db.RecruitmentEvents.Remove(item);
-                }
-                foreach (Candidate item in r.Candidate)
-                {
-                    item.Person = null;
-                    //foreach (CandidateComment item2 in item.Comments)
-                    //{
-                    //    db.Commments.Remove(item2);
-                    //}
-                    db.Candidates.Remove(item);
-                }
 
                 db.Recruitments.Remove(r);
                 db.SaveChanges();

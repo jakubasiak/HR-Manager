@@ -74,3 +74,5 @@ C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\o
 C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160110.resources
 C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160111.resources
 C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160113.resources
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160114.resources
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160114_1.resources

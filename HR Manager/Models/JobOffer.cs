@@ -45,6 +45,7 @@ namespace HR_Manager.Models
         [DefaultValue(true)]
         public bool Current { get; set; }
 
+
     }
 
 

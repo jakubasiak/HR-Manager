@@ -7,9 +7,14 @@ using System.Web;
 
 namespace HR_Manager.Models
 {
-    public class RecruitmentEvent: IEntity
+    public class RecruitmentEvent
     {
         public virtual Recruitment Recruitment { get; set; }
+
+        [Key]
+        [Required]
+        public int Id { get; set; }
+
 
         [Display(Name = "Czas")]
         [Required]

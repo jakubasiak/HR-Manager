@@ -36,16 +36,16 @@
                         if (item.Current)
                         {
                             <tr>
-                                <td>
+                                <td class="vert-align">
                                     @Html.DisplayFor(modelItem => item.OfferNumber)
                                 </td>
-                                <td>
+                                <td class="vert-align">
                                     @Html.DisplayFor(modelItem => item.Name)
                                 </td>
-                                <td>
+                                <td class="vert-align">
                                     @Html.DisplayFor(modelItem => item.Location)
                                 </td>
-                                <td>
+                                <td class="vert-align">
                                     @{
                                         if (item.Current == true)
                                         {
@@ -92,16 +92,16 @@
                         if (!item.Current)
                         {
                             <tr>
-                                <td>
+                                <td class="vert-align">
                                     @Html.DisplayFor(modelItem => item.OfferNumber)
                                 </td>
-                                <td>
+                                <td class="vert-align">
                                     @Html.DisplayFor(modelItem => item.Name)
                                 </td>
-                                <td>
+                                <td class="vert-align">
                                     @Html.DisplayFor(modelItem => item.Location)
                                 </td>
-                                <td>
+                                <td class="vert-align">
                                     @{
                                         if (item.Current == true)
                                         {

@@ -27,5 +27,16 @@ namespace HR_Manager.Models
         {
             return new ApplicationDbContext();
         }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<RecruitmentEvent>()
+                .HasRequired(x => x.Recruitment)
+                .WithMany(x => x.Events)
+                .WillCascadeOnDelete(true);
+
+            //modelBuilder.Entity<Recruitment>().HasOptional<RecruitmentEvent>().WithOptionalDependent().WillCascadeOnDelete(true);
+                
+        }
     }
 }

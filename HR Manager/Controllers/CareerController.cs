@@ -54,7 +54,10 @@ namespace HR_Manager.Controllers
         public ActionResult ShowJobOfferList()
         {
             IEnumerable<JobOffer> model = dao.GetJobOfferList();
-            return View(model);
+            if (model.Count() > 0)
+                return View(model);
+            else
+                return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Edit(long? id)
@@ -90,25 +93,23 @@ namespace HR_Manager.Controllers
 
         }
 
-        public ActionResult Delete(long? id)
-        {
-            if (id != null)
-            {
-                dao.RemoveJobOffer((long) id);
+        //public ActionResult Delete(long id)
+        //{
 
-            }
-            return RedirectToAction("ShowJobOfferList", "Career", null);
-        }
-        public ActionResult Apply(long id)
-        {
-            JobOffer jo = dao.GetJobOfferByOfferNumber(id);
-            ApplyViewModel avm = new ApplyViewModel();
-            avm.OfferNumber = jo.OfferNumber;
-            avm.Location = jo.Location;
-            avm.OfferName = jo.Name;
-            avm.JobDescription = jo.JobDescription;
-            return View(avm);
-        }
+        //        dao.RemoveJobOffer((long) id);
+
+        //    return RedirectToAction("ShowJobOfferList", "Career", null);
+        //}
+        //public ActionResult Apply(long id)
+        //{
+        //    JobOffer jo = dao.GetJobOfferByOfferNumber(id);
+        //    ApplyViewModel avm = new ApplyViewModel();
+        //    avm.OfferNumber = jo.OfferNumber;
+        //    avm.Location = jo.Location;
+        //    avm.OfferName = jo.Name;
+        //    avm.JobDescription = jo.JobDescription;
+        //    return View(avm);
+        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]

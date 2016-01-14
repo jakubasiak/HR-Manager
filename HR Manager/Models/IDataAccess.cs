@@ -11,7 +11,7 @@ namespace HR_Manager.Models
     {
         bool SaveJobOffer(JobOffer model);
         bool UpdatateJobOffer(JobOffer model);
-        bool RemoveJobOffer(long id);
+        //bool RemoveJobOffer(long id);
         JobOffer GetJobOfferByOfferNumber(long id);
         IEnumerable<JobOffer> GetJobOfferList();
         

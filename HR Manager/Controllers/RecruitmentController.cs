@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -13,24 +14,30 @@ namespace HR_Manager.Controllers
     [Authorize]
     public class RecruitmentController : BaseController
     {
-        //// GET: Recruitment
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
 
         //GET: Recruitment/Show/5
-        public ActionResult Show(long id)
+        public ActionResult Show(long? id)
         {
-            Recruitment model = dao.GetRecruitmentById(id);
+            if (id != null)
+            {
+                Recruitment model = dao.GetRecruitmentById((long)id);
 
-            return View("CreateAndShow", model);
+                return View("CreateAndShow", model);
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
         }
+
+        
 
         public ActionResult List()
         {
             IEnumerable<Recruitment> recr = dao.GetRecruitmentsList();
             List<RecruitmentListViewModel> model = new List<RecruitmentListViewModel>();
+            if(recr.Count()>0)
+            { 
             foreach(var r in recr)
             {
                 RecruitmentListViewModel rlvm = new RecruitmentListViewModel()
@@ -45,7 +52,12 @@ namespace HR_Manager.Controllers
                 };
                 model.Add(rlvm);
             }
-            return View(model);
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // GET: Recruitment/Create
@@ -88,7 +100,7 @@ namespace HR_Manager.Controllers
         {
             dao.RemoveRecruitmentById(id);
 
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("List", "Recruitment");
         }
 
         [HttpPost]
@@ -136,64 +148,6 @@ namespace HR_Manager.Controllers
             return new EmptyResult();
         }
 
-        // POST: Recruitment/Create
-        //[HttpPost]
-        //public ActionResult Create(FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add insert logic here
 
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-        // GET: Recruitment/Edit/5
-        //public ActionResult Edit(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: Recruitment/Edit/5
-        //[HttpPost]
-        //public ActionResult Edit(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add update logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-        //// GET: Recruitment/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: Recruitment/Delete/5
-        //[HttpPost]
-        //public ActionResult Delete(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add delete logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
     }
 }

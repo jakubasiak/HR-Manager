@@ -1,6 +1,16 @@
-﻿body {
+﻿@font-face {
+    font-family: 'Lato-Light';
+    src: url('Fonts/Lato-Light.ttf') format('truetype');
+    font-weight:bold;
+}
+@font-face {
+    font-family: 'Lato-Medium';
+    src: url('Fonts/Lato-Medium.ttf') format('truetype');
+}
+body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: Lato-Light;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -8,7 +18,9 @@
     padding-left: 15px;
     padding-right: 15px;
 }
-
+.jumbotron h1, h3{
+    font-family: Lato-Medium;
+}
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
@@ -77,4 +89,8 @@ td, th {
 }
 .table tbody>tr>td.vert-align{
     vertical-align: middle;
+}
+.btn, .btn-default{
+    margin-top:3px;
+    margin-bottom: 3px;
 }

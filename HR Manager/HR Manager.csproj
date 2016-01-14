@@ -201,6 +201,14 @@
     <Compile Include="Migrations\201601131959250_20160113.Designer.cs">
       <DependentUpon>201601131959250_20160113.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601141543555_20160114.cs" />
+    <Compile Include="Migrations\201601141543555_20160114.Designer.cs">
+      <DependentUpon>201601141543555_20160114.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601141631266_20160114_1.cs" />
+    <Compile Include="Migrations\201601141631266_20160114_1.Designer.cs">
+      <DependentUpon>201601141631266_20160114_1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -242,6 +250,18 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\Fonts\Lato-Light.ttf" />
+    <Content Include="Content\Fonts\Lato-LightItalic.ttf" />
+    <Content Include="Content\Fonts\Lato-Medium.ttf" />
+    <Content Include="Content\Fonts\Lato-MediumItalic.ttf" />
+    <Content Include="Content\Fonts\Lato-Regular.ttf" />
+    <Content Include="Content\Fonts\Lato-Thin.ttf" />
+    <Content Include="Content\Fonts\Lato-ThinItalic.ttf" />
+    <Content Include="Content\Fonts\Lato-Light.woff" />
+    <Content Include="Content\Fonts\Lato-LightItalic.woff" />
+    <Content Include="Content\Fonts\Lato-Medium.woff" />
+    <Content Include="Content\Fonts\Lato-MediumItalic.woff" />
+    <Content Include="Content\Fonts\Lato-Regular.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -338,6 +358,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601131959250_20160113.resx">
       <DependentUpon>201601131959250_20160113.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601141543555_20160114.resx">
+      <DependentUpon>201601141543555_20160114.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601141631266_20160114_1.resx">
+      <DependentUpon>201601141631266_20160114_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace HR_Manager.Models
 {
+    
     public class IEntity
     {
         public int Id { get; set; }
