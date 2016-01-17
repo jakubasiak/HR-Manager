@@ -1,0 +1,52 @@
+﻿@model HR_Manager.Models.Candidate
+
+<div>
+    <h4>Candidate</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FinancialExpectations)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinancialExpectations)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReadyToMove)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReadyToMove)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MeetsRequirements)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeetsRequirements)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Invited)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Invited)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplyTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplyTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

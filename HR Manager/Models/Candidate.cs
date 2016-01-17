@@ -24,8 +24,12 @@ namespace HR_Manager.Models
         [Display(Name = "Zaproszony na spotkanie")]
         public bool Invited { get; set; }
 
+        [Display(Name ="Zaaplikował")]
+        public DateTime ApplyTime { get; set; }
 
-        public virtual ICollection<Recruitment> Recruitments { get; set; }
+        public virtual Recruitment Recruitment { get; set; }
+
+
 
     }
 }

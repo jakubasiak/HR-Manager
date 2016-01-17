@@ -1,0 +1,28 @@
+﻿@model HR_Manager.Models.Candidate
+
+<div class="panel panel-default" id="C-@Model.Id">
+    <div class="panel-heading">
+        <strong>@Model.Person.GetFullName() - Zaplikował: @Model.ApplyTime.ToString("yyyy/MM/d HH:mm:ss")</strong>
+        <div style="display:inline; float:right;">
+
+            @*@Ajax.ActionLink("Edytuj", "EditRecruitmentEvent", "Recruitment", new { eventId = re.Id }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = re.Id.ToString(), InsertionMode = InsertionMode.Replace }) |
+                @Ajax.ActionLink("Usuń", "DeleteRecruitmentEvent", "Recruitment", new { eventId = re.Id }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = re.Id.ToString(), InsertionMode = InsertionMode.Replace, OnSuccess = String.Format("panelRemove({0})", re.Id) })*@
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-12">
+
+
+                    @Html.ActionLink("Pobierz CV", "GetCV", "Candidate", new { path = Model.Person.CVPath, name = Model.Person.GetFullName()}, new { type = "button", @class = "btn btn-sm btn-default" })
+                    @Ajax.ActionLink("Pokaż dane kandydata", "PartialShow", "Candidate", new { id = Model.Id }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result_"+ Model.Id.ToString(), InsertionMode = InsertionMode.Replace }, new { type = "button", @class = "btn btn-sm btn-default" })                 
+                    @Html.ActionLink("Dodaj notatkę", "Show", "Career", new { id = Model.Id }, new { type = "button", @class = "btn btn-sm btn-default" })
+                    @Html.ActionLink("Dodaj tagi", "Show", "Career", new { id = Model.Id }, new { type = "button", @class = "btn btn-sm btn-default" })
+                    @Html.ActionLink("Zaproś na spotkanie", "Show", "Career", new { id = Model.Id }, new { type = "button", @class = "btn btn-sm btn-default" })
+
+        </div>
+        <hr />
+        <div id="result_@Model.Id">
+            dfgsdgd
+        </div>
+    </div>
+</div>

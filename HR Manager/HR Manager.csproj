@@ -209,12 +209,24 @@
     <Compile Include="Migrations\201601141631266_20160114_1.Designer.cs">
       <DependentUpon>201601141631266_20160114_1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601151640517_20160115.cs" />
+    <Compile Include="Migrations\201601151640517_20160115.Designer.cs">
+      <DependentUpon>201601151640517_20160115.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601171142184_20160117.cs" />
+    <Compile Include="Migrations\201601171142184_20160117.Designer.cs">
+      <DependentUpon>201601171142184_20160117.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601171759574_20160117_1.cs" />
+    <Compile Include="Migrations\201601171759574_20160117_1.Designer.cs">
+      <DependentUpon>201601171759574_20160117_1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplyViewModel.cs" />
     <Compile Include="Models\Candidate.cs" />
-    <Compile Include="Models\CandidateComment.cs" />
+    <Compile Include="Models\PersonNote.cs" />
     <Compile Include="Models\DAO.cs" />
     <Compile Include="Models\GIDOLog.cs" />
     <Compile Include="Models\IDataAccess.cs" />
@@ -230,6 +242,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\AppConfig.cs" />
     <Compile Include="Utils\ErrorLog.cs" />
+    <Compile Include="Utils\TrueRequired.cs" />
     <Compile Include="Utils\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +255,8 @@
     <Content Include="Content\Images\4.png" />
     <Content Include="Content\Images\5.png" />
     <Content Include="Content\Images\jquery-te.png" />
+    <Content Include="Content\Images\tlo.jpg" />
+    <Content Include="Content\Images\tlo2.jpg" />
     <Content Include="Content\jquery-te-1.4.0.css" />
     <Content Include="Content\MyStyles.css" />
     <Content Include="Content\Site.css" />
@@ -324,13 +339,14 @@
     <Content Include="Views\Home\PublicIndex.cshtml" />
     <Content Include="Views\Recruitment\_EditRecruitmentEvent.cshtml" />
     <Content Include="Views\Recruitment\_SingleRecruitmentEvent.cshtml" />
+    <Content Include="Views\Recruitment\_SingleCandidate.cshtml" />
+    <Content Include="Views\Candidate\_PartialShow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\CV\" />
     <Folder Include="App_Data\Letters\" />
     <Folder Include="App_Data\Photos\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Candidate\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -364,6 +380,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601141631266_20160114_1.resx">
       <DependentUpon>201601141631266_20160114_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601151640517_20160115.resx">
+      <DependentUpon>201601151640517_20160115.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601171142184_20160117.resx">
+      <DependentUpon>201601171142184_20160117.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601171759574_20160117_1.resx">
+      <DependentUpon>201601171759574_20160117_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

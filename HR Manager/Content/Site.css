@@ -11,6 +11,11 @@ body {
     padding-top: 50px;
     padding-bottom: 20px;
     font-family: Lato-Light;
+    color:black;
+    background-image: url('Images/tlo2.jpg');
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: fixed;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -45,8 +50,16 @@ textarea {
 
 .tile {
     text-align: center;
+    border-radius: 6px;
 }
-
+img{
+    margin:5px;
+}
+.tile:hover{
+    background-color:#eeeeee;
+    border-radius: 6px;
+    color:black;
+}
 .multi-input {
 }
 
@@ -54,9 +67,13 @@ textarea {
     margin-left: 50px;
     margin-top: 5px;
 }
-
+a{
+    color:black;
+}
 a:hover {
     text-decoration: none;
+    font-weight:bolder;
+
 }
 
 

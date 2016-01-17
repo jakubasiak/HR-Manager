@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HR_Manager.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -61,7 +62,8 @@ namespace HR_Manager.Models
         [Display(Name = "Zgoda na relokacje")]
         public bool ReadyToMove { get; set; }
 
-        [Range(typeof(bool), "true", "true", ErrorMessage ="Zgoda na przetwarzanie danych osobowych jest wymagana")]
+        
+        [TrueRequired(ErrorMessage ="Zgoda na przetwarzanie danych jest wymagana")]
         [Display(Name = "Zgoda na przetwarzanie danych osobowych")]
         public bool PersonalDataProcessing { get; set; }
 

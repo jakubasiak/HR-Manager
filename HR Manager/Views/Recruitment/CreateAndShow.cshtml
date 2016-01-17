@@ -107,29 +107,40 @@
                     }
                 </div>
 
-               
+
 
                 @if (Model.Events.Any(x => x.Id != null))
                 {
-                <div class="panel panel-default">
-                    <div class="panel-heading" data-toggle="collapse" data-target="#RecruitmentEvents"><strong>Przebieg rekrutacji</strong></div>
-                    <div class="panel-body collapse in" id="RecruitmentEvents">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" data-toggle="collapse" data-target="#RecruitmentEvents"><strong>Przebieg rekrutacji</strong></div>
+                        <div class="panel-body collapse in" id="RecruitmentEvents">
 
-                        <div id="resultTarget">
+                            <div id="resultTarget">
 
-                            @Html.Partial("_ShowEventView", Model.Events)
+                                @Html.Partial("_ShowEventView", Model.Events)
 
+                            </div>
                         </div>
                     </div>
-                </div>
                 }
             </dic>
+
 
             <dic class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading" data-toggle="collapse" data-target="#Candidates"><strong>Kandydaci</strong></div>
                     <div class="panel-body collapse in" id="Candidates">
-                        Kandydaci
+                        @if(Model.Candidate.Count>0)
+                        { 
+                            foreach (var c in Model.Candidate.Reverse())
+                            {
+                                @Html.Partial("_SingleCandidate", c);
+                            }
+                        }
+                        else
+                        {
+                            <p>Brak kandydatów na to stanowisko!</p>
+                        }
                     </div>
                 </div>
             </dic>

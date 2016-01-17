@@ -100,31 +100,80 @@ namespace HR_Manager.Controllers
 
         //    return RedirectToAction("ShowJobOfferList", "Career", null);
         //}
-        //public ActionResult Apply(long id)
-        //{
-        //    JobOffer jo = dao.GetJobOfferByOfferNumber(id);
-        //    ApplyViewModel avm = new ApplyViewModel();
-        //    avm.OfferNumber = jo.OfferNumber;
-        //    avm.Location = jo.Location;
-        //    avm.OfferName = jo.Name;
-        //    avm.JobDescription = jo.JobDescription;
-        //    return View(avm);
-        //}
+        public ActionResult Apply(long id)
+        {
+            JobOffer jo = dao.GetJobOfferByOfferNumber(id);
+            ApplyViewModel avm = new ApplyViewModel();
+            avm.OfferNumber = jo.OfferNumber;
+            avm.Location = jo.Location;
+            avm.OfferName = jo.Name;
+            avm.JobDescription = jo.JobDescription;
+            return View(avm);
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Apply(ApplyViewModel model)
         {
 
-            
+
             //bool letterSaved = dao.SaveFileOnServer(Server, model.LetterFile, AppConfig.LettersFolderRelative);
             //bool photoSaved = dao.SaveFileOnServer(Server, model.PhotoFile, AppConfig.PhotosFolderRelative);
-
             if (ModelState.IsValid)
             {
+                
                 bool cvSaved = true;
-                if (model.CVFile!=null)
-                    cvSaved = dao.SaveFileOnServer(Server, model.CVFile, AppConfig.CVFolderRelative);
+                string path = null;
+                if (model.CVFile != null)
+                {
+                    path = Utils.Utils.CreatePath(Server, model.CVFile, Utils.AppConfig.CVFolderRelative);
+                    cvSaved = dao.SaveFileOnServer(path, model.CVFile);
+                }
+                Person person = new Person()
+                {
+                    CanContact = model.CanContact,
+                    City = model.City,
+                    CVPath = path,
+                    Email = model.Email,
+                    Name = model.Name,
+                    PersonalDataProcessing = model.PersonalDataProcessing,
+                    PhoneNumber = model.PhoneNumber,
+                    Street = model.Street,
+                    Surname = model.Surname,
+                    Zip = model.Zip,
+                    Candidates = new List<Candidate>(),
+                    Notes = new List<PersonNote>()                  
+                };
+
+                Recruitment recruitment = dao.GetRecruitmentById(model.OfferNumber);
+
+                Candidate candidate = new Candidate()
+                {
+                    FinancialExpectations = model.FinancialExpectations,
+                    Invited = false,
+                    MeetsRequirements = true,
+                    Person = person,
+                    ReadyToMove = model.ReadyToMove,
+                    Recruitment = recruitment,
+                    ApplyTime = DateTime.Now
+                };
+
+                RecruitmentEvent ev = new RecruitmentEvent()
+                {
+                    Author = "HR Manager",
+                    AuthorId = "HR Manager",
+                    Recruitment = recruitment,
+                    Time = DateTime.Now,
+                    Event = person.GetFullName() + " zaaplikował/a na stanowisko"
+
+                };
+
+                recruitment.Events.Add(ev);
+                recruitment.Candidate.Add(candidate);
+
+                //dao.SavePerson(person);
+                //dao.SaveCandidate(candidate);
+                dao.UpdatateRecruitment(recruitment);
 
                 return View("ApplyComplete", cvSaved);
             }

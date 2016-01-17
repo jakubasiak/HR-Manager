@@ -36,5 +36,39 @@ namespace HR_Manager.Utils
             var path = Path.Combine(cvPathFolder, photoFileName);
             return path;
         }
+
+        public static string CreatePath(HttpServerUtilityBase server, HttpPostedFileBase file, string folderPath)
+        {
+            if (IsFileCorrect(file))
+            {
+                var fileExt = Path.GetExtension(file.FileName);
+                var fileName = Guid.NewGuid() + fileExt;
+
+                var path = Path.Combine(server.MapPath(folderPath), fileName);
+                return path;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
+        private static bool IsFileCorrect(HttpPostedFileBase file)
+        {
+            bool isNotNull = file != null ? true : false;
+            bool isBiggerThenZero = file.ContentLength > 0 ? true : false;
+            bool isNotTooBig = file.ContentLength < (5 * 1024 * 1024) ? true : false;
+            bool isImage = Path.GetExtension(file.FileName).ToLower().Equals(".jpg") ||
+                Path.GetExtension(file.FileName).ToLower().Equals(".jpeg") ||
+                Path.GetExtension(file.FileName).ToLower().Equals(".png") ||
+                Path.GetExtension(file.FileName).ToLower().Equals(".gif");
+            bool isPdf = Path.GetExtension(file.FileName).ToLower().Equals(".pdf");
+
+            if (isNotNull && isBiggerThenZero && isNotTooBig && (isImage || isPdf))
+                return true;
+            else
+                return false;
+        }
     }
 }

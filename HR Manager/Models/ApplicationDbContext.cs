@@ -13,7 +13,7 @@ namespace HR_Manager.Models
         public DbSet<Recruitment> Recruitments { get; set; }
         public DbSet<RecruitmentEvent> RecruitmentEvents { get; set; }
         public DbSet<Candidate> Candidates { get; set; }
-        public DbSet<CandidateComment> Commments { get; set; }
+        public DbSet<PersonNote> Notes { get; set; }
         public DbSet<Person> People { get; set; }
         public DbSet<GIDOLog> GiDOlog { get; set; }
         public DbSet<HR_Manager.Utils.ErrorLog> Errors { get; set; }
@@ -33,6 +33,11 @@ namespace HR_Manager.Models
             modelBuilder.Entity<RecruitmentEvent>()
                 .HasRequired(x => x.Recruitment)
                 .WithMany(x => x.Events)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<Candidate>()
+                .HasRequired(x => x.Recruitment)
+                .WithMany(x => x.Candidate)
                 .WillCascadeOnDelete(true);
 
             //modelBuilder.Entity<Recruitment>().HasOptional<RecruitmentEvent>().WithOptionalDependent().WillCascadeOnDelete(true);

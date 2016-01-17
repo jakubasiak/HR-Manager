@@ -42,5 +42,11 @@ namespace HR_Manager.Models
         public bool CanContact { get; set; }
 
         public virtual ICollection<Candidate> Candidates { get; set; }
+        public virtual ICollection<PersonNote> Notes { get; set; }
+
+        public string GetFullName()
+        {
+            return Name + " " + Surname;
+        }
     }
 }

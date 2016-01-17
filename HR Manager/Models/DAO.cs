@@ -9,10 +9,10 @@ using System.Web.Mvc;
 
 namespace HR_Manager.Models
 {
-    public class DAO: IDataAccess
+    public class DAO : IDataAccess
     {
         private ApplicationDbContext db;
-        
+
 
         public DAO()
         {
@@ -39,11 +39,13 @@ namespace HR_Manager.Models
 
         public bool UpdatateJobOffer(JobOffer model)
         {
-            try {
+            try
+            {
                 db.Entry(model).State = EntityState.Modified;
                 db.SaveChanges();
                 return true;
-            }catch
+            }
+            catch
             {
                 //WriteErrorLog("Nieudana aktualizacja ogłoszenia " + DateTime.Now);
                 return false;
@@ -95,7 +97,7 @@ namespace HR_Manager.Models
             {
                 foreach (var ev in recr.Events)
                 {
-                    if(GetRecruitmentEventById(ev.Id)==null)
+                    if (GetRecruitmentEventById(ev.Id) == null)
                     {
                         SaveRecruitmentEvwnt(ev);
                     }
@@ -117,7 +119,7 @@ namespace HR_Manager.Models
         }
         public Recruitment GetRecruitmentById(long id)
         {
-            return db.Recruitments.Include(x=>x.Events).First(x=>x.Id==id);
+            return db.Recruitments.First(x => x.Id == id);
         }
 
         public bool RemoveRecruitmentById(long id)
@@ -135,10 +137,24 @@ namespace HR_Manager.Models
                 return true;
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 string s = e.StackTrace;
                 //WriteErrorLog("Nieudany usunięcie ogłoszenia " + DateTime.Now);
+                return false;
+            }
+        }
+        public bool UpdatateRecruitment(Recruitment rec)
+        {
+            try
+            {
+                db.Entry(rec).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
+            }
+            catch(Exception e)
+            {
+                //WriteErrorLog("Nieudana aktualizacja ogłoszenia " + DateTime.Now);
                 return false;
             }
         }
@@ -205,25 +221,52 @@ namespace HR_Manager.Models
         }
         #endregion
 
-        #region Pozostałe publiczne
-
-        public bool SaveFileOnServer(HttpServerUtilityBase server, HttpPostedFileBase file, string folderPath)
+        #region Candidate
+        public bool SaveCandidate(Candidate candidate)
         {
             try
             {
-                if (IsFileCorrect(file))
-                {
-                    var fileExt = Path.GetExtension(file.FileName);
-                    var fileName = Guid.NewGuid() + fileExt;
+                db.Candidates.Add(candidate);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
 
-                    var path = Path.Combine(server.MapPath(folderPath), fileName);
-                    file.SaveAs(path);
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+        }
+
+        public Candidate GetCandidateById(int id)
+        {
+            return db.Candidates.First(x => x.Id == id);
+        }
+        #endregion
+
+        #region Person
+        public bool SavePerson(Person person)
+        {
+            try
+            {
+                db.People.Add(person);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #region Pozostałe publiczne
+
+        public bool SaveFileOnServer(string path, HttpPostedFileBase file)
+        {
+            try
+            {
+                file.SaveAs(path);
+                return true;
             }
             catch (Exception)
             {
@@ -231,26 +274,13 @@ namespace HR_Manager.Models
             }
         }
 
+        
+
         #endregion
 
         #region Pozostałe prywatne
 
-        private bool IsFileCorrect(HttpPostedFileBase file)
-        {
-            bool isNotNull = file != null ? true : false;
-            bool isBiggerThenZero = file.ContentLength > 0 ? true : false;
-            bool isNotTooBig = file.ContentLength < (5 * 1024 * 1024) ? true : false;
-            bool isImage = Path.GetExtension(file.FileName).ToLower().Equals(".jpg") ||
-                Path.GetExtension(file.FileName).ToLower().Equals(".jpeg") ||
-                Path.GetExtension(file.FileName).ToLower().Equals(".png") ||
-                Path.GetExtension(file.FileName).ToLower().Equals(".gif");
-            bool isPdf = Path.GetExtension(file.FileName).ToLower().Equals(".pdf");
 
-            if (isNotNull && isBiggerThenZero && isNotTooBig && (isImage || isPdf))
-                return true;
-            else
-                return false;
-        }
 
         private void WriteErrorLog(string errorInfo)
         {

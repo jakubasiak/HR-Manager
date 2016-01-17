@@ -6,7 +6,7 @@ using System.Web;
 
 namespace HR_Manager.Models
 {
-    public class CandidateComment: IEntity
+    public class PersonNote: IEntity
     {
         [Display(Name = "Data")]
         public DateTime Date { get; set; }

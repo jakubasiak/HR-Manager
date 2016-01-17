@@ -9,23 +9,42 @@ namespace HR_Manager.Models
 {
     public interface IDataAccess
     {
+        #region JobOffer
+
         bool SaveJobOffer(JobOffer model);
         bool UpdatateJobOffer(JobOffer model);
         //bool RemoveJobOffer(long id);
         JobOffer GetJobOfferByOfferNumber(long id);
         IEnumerable<JobOffer> GetJobOfferList();
-        
+
+        #endregion
+
+        #region Recruitment
+
         bool SaveRecruitment(Recruitment recr);
         bool RemoveRecruitmentById(long id);
         Recruitment GetRecruitmentById(long id);
+        bool UpdatateRecruitment(Recruitment rec);
         IEnumerable<Recruitment> GetRecruitmentsList();
+        #endregion
 
+        #region RecruitmentEvent
         bool SaveRecruitmentEvwnt(RecruitmentEvent ev);
         bool UpdatateRecruitmentEvent(RecruitmentEvent ev);
         bool RemoveRecruitmentEvent(int id);
         RecruitmentEvent GetRecruitmentEventById(int id);
+        #endregion
 
-        bool SaveFileOnServer(HttpServerUtilityBase server, HttpPostedFileBase file, string folderPath);
+        #region Candidate
+        bool SaveCandidate(Candidate candidate);
+        Candidate GetCandidateById(int id);
+        #endregion
+
+        #region Person
+        bool SavePerson(Person person);
+        #endregion
+        bool SaveFileOnServer(string path, HttpPostedFileBase file);
+
 
     }
 
