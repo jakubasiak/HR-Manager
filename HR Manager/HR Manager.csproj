@@ -254,6 +254,7 @@
     <Content Include="Content\Images\2.png" />
     <Content Include="Content\Images\4.png" />
     <Content Include="Content\Images\5.png" />
+    <Content Include="Content\Images\ajax-loader.gif" />
     <Content Include="Content\Images\jquery-te.png" />
     <Content Include="Content\Images\tlo.jpg" />
     <Content Include="Content\Images\tlo2.jpg" />

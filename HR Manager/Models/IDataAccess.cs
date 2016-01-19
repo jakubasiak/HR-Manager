@@ -38,6 +38,7 @@ namespace HR_Manager.Models
         #region Candidate
         bool SaveCandidate(Candidate candidate);
         Candidate GetCandidateById(int id);
+        bool UpdatateCandidate(Candidate candidate);
         #endregion
 
         #region Person

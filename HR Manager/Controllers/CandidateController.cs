@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using HR_Manager.Models;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 
 namespace HR_Manager.Controllers
 {
@@ -33,6 +34,14 @@ namespace HR_Manager.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+        }
+        public async Task<bool> MeetsRequirementsChange(int canndidateId, bool choice)
+        {
+            Candidate can = dao.GetCandidateById(canndidateId);
+            can.MeetsRequirements = choice;
+            dao.UpdatateCandidate(can);
+
+            return true;
         }
     }
 }

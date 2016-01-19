@@ -1,16 +1,48 @@
 ﻿@model HR_Manager.Models.Candidate
 
 <div>
-    <h4>Candidate</h4>
+    <h4>@Model.Person.GetFullName()</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FinancialExpectations)
-        </dt>
+        @if (Model.Person.PhoneNumber != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Person.PhoneNumber)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Person.PhoneNumber)
+            </dd>
+        }
+        @if (Model.Person.Email != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Person.Email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Person.Email)
+            </dd>
+        }
+        @if (Model.Person.GetAdress() != null)
+        {
+            <dt>
+                Adres
+            </dt>
+            <dd>
+                @Model.Person.GetAdress()
+            </dd>
+        }
+        @if (Model.FinancialExpectations != null)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.FinancialExpectations)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FinancialExpectations)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.FinancialExpectations)
+            </dd>
+        }
+
+
 
         <dt>
             @Html.DisplayNameFor(model => model.ReadyToMove)
@@ -20,13 +52,7 @@
             @Html.DisplayFor(model => model.ReadyToMove)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MeetsRequirements)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MeetsRequirements)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Invited)
@@ -45,8 +71,50 @@
         </dd>
 
     </dl>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt class="vert-align">
+            @Html.DisplayNameFor(model => model.MeetsRequirements)
+        </dt>
+
+        <dd class="vert-align">
+
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-default"  >
+                    <div id="divToReplace_@Model.Id">
+                        @if (Model.MeetsRequirements)
+                        {
+                            <text>Tak</text>
+                        }
+                        else
+                        {
+                            <text>Nie</text>
+                        }
+                    </div>
+                </button>
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li class="yesOrNo">@Ajax.ActionLink("Tak", "MeetsRequirementsChange", "Candidate", new {canndidateId = Model.Id, choice = true }, new AjaxOptions { HttpMethod = "POST" })</li>
+                    <li class="yesOrNo">@Ajax.ActionLink("Nie", "MeetsRequirementsChange", "Candidate", new { canndidateId = Model.Id, choice = false }, new AjaxOptions { HttpMethod = "POST" })</li>
+                </ul>
+            </div>
+        </dd>
+    </dl>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+<script>
+    $(document).ready(function(){
+        $("li.yesOrNo").click(function () {
+            text = $(this).text();
+            $("#divToReplace_@Model.Id").text(text);
+        });
+    });
+</script>

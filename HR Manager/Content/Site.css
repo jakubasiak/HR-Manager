@@ -104,7 +104,7 @@ td, th {
     text-align:center;
     vertical-align:central;
 }
-.table tbody>tr>td.vert-align{
+.table tbody>tr>td.vert-align, .vert-align{
     vertical-align: middle;
 }
 .btn, .btn-default{

@@ -241,6 +241,20 @@ namespace HR_Manager.Models
         {
             return db.Candidates.First(x => x.Id == id);
         }
+        public bool UpdatateCandidate(Candidate candidate)
+        {
+            try
+            {
+                db.Entry(candidate).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                //WriteErrorLog("Nieudana aktualizacja ogłoszenia " + DateTime.Now);
+                return false;
+            }
+        }
         #endregion
 
         #region Person

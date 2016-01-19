@@ -48,5 +48,13 @@ namespace HR_Manager.Models
         {
             return Name + " " + Surname;
         }
+        public string GetAdress()
+        {
+            string str = Street + " " + Zip + " " + City;
+            if (string.IsNullOrEmpty(str))
+                return null;
+            else
+                return str;
+        }
     }
 }
