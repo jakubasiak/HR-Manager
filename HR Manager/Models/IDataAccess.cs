@@ -43,8 +43,11 @@ namespace HR_Manager.Models
 
         #region Person
         bool SavePerson(Person person);
+        Person GetPersonById(int id);
+        bool UpdatatePerson(Person person);
         #endregion
         bool SaveFileOnServer(string path, HttpPostedFileBase file);
+
 
 
     }

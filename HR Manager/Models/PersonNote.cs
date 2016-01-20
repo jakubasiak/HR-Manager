@@ -17,7 +17,7 @@ namespace HR_Manager.Models
         [Display(Name = "Komentarz")]
         public string Comment { get; set; }
 
-        public virtual Candidate Candidate { get; set; }
+        public virtual Person Person { get; set; }
 
     }
 }

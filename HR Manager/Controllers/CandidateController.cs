@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using HR_Manager.Models;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity;
 
 namespace HR_Manager.Controllers
 {
@@ -42,6 +44,29 @@ namespace HR_Manager.Controllers
             dao.UpdatateCandidate(can);
 
             return true;
+        }
+        public async Task<ActionResult> AddNote(int id)
+        {
+            return View("_AddNote", id);
+        }
+        [HttpPost]
+        public async Task<ActionResult> AddNote(int id, string note)
+        {
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            Person person = dao.GetPersonById(id);
+            PersonNote pn = new PersonNote()
+            {
+                Author = user.FirstName + " " + user.Surname,
+                AuthorId = user.Id,
+                Person = person,
+                Comment = note,
+                Date = DateTime.Now,
+
+            };
+            person.Notes.Add(pn);
+            dao.UpdatatePerson(person);
+
+            return View("_AjaxLoaderView");
         }
     }
 }

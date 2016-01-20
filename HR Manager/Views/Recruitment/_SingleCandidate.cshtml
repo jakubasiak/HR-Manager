@@ -15,14 +15,14 @@
 
                     @Html.ActionLink("Pobierz CV", "GetCV", "Candidate", new { path = Model.Person.CVPath, name = Model.Person.GetFullName()}, new { type = "button", @class = "btn btn-sm btn-default" })
                     @Ajax.ActionLink("Pokaż dane kandydata", "PartialShow", "Candidate", new { id = Model.Id }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result_"+ Model.Id.ToString(), InsertionMode = InsertionMode.Replace }, new { type = "button", @class = "btn btn-sm btn-default ajaxLoaderTrigger" })                 
-                    @Html.ActionLink("Dodaj notatkę", "Show", "Career", new { id = Model.Id }, new { type = "button", @class = "btn btn-sm btn-default" })
+                    @Ajax.ActionLink("Dodaj notatkę", "AddNote", "Candidate", new { id = Model.Id }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result_" + Model.Id.ToString(), InsertionMode = InsertionMode.Replace }, new { type = "button", @class = "btn btn-sm btn-default ajaxLoaderTrigger" })
                     @Html.ActionLink("Dodaj tagi", "Show", "Career", new { id = Model.Id }, new { type = "button", @class = "btn btn-sm btn-default" })
                     @Html.ActionLink("Zaproś na spotkanie", "Show", "Career", new { id = Model.Id }, new { type = "button", @class = "btn btn-sm btn-default" })
 
         </div>
         <hr />
         <div id="result_@Model.Id">
-            <img class="center-content ajaxLoader" src="~/Content/Images/ajax-loader.gif" style="display:none;"/>
+            @Html.Partial("_AjaxLoaderView")
         </div>
     </div>
 </div>

@@ -107,14 +107,13 @@
 
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id })
 </p>
 <script>
-    $(document).ready(function(){
+    //$(document).ready(function(){
         $("li.yesOrNo").click(function () {
             text = $(this).text();
             $("#divToReplace_@Model.Id").text(text);
         });
-    });
+    //});
 </script>

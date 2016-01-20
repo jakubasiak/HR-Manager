@@ -19,7 +19,8 @@
         });
 
         $(".ajaxLoaderTrigger").click(function () {
-            $(this).closest("img.ajaxLoader").css("display").remove();
+            // $(this).closest("div").next("div").children("img").css("display","block");
+            $(this).closest("div").next().next().children("img").css("display", "block");
         });
 
         //$("#MeetsRequirements").click(function () {

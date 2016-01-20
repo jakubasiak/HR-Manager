@@ -271,6 +271,24 @@ namespace HR_Manager.Models
                 return false;
             }
         }
+        public Person GetPersonById(int id)
+        {
+            return db.People.First(x => x.Id == id);
+        }
+        public bool UpdatatePerson(Person person)
+        {
+            try
+            {
+                db.Entry(person).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                //WriteErrorLog("Nieudana aktualizacja ogłoszenia " + DateTime.Now);
+                return false;
+            }
+        }
         #endregion
 
         #region Pozostałe publiczne
