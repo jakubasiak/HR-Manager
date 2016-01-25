@@ -1,0 +1,29 @@
+﻿@model ICollection<HR_Manager.Models.SkillTag>
+<div>
+    @using (Ajax.BeginForm("AddTag", "Candidate", new
+    { id = ViewBag.PersonId }, new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "tag-list-" + ViewBag.PersonId,
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = string.Format("clearInput(\'{0}\')", "#newTag")
+
+
+
+    }, new { @class="form-inline", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+
+
+            <label for="newTag">Nazwy tagów:</label>
+            <input type="text" class="form-control" id="newTag" name="newTag">
+            <input type="submit" value="Dodaj" class="btn btn-default" />
+
+
+    }
+    <hr />
+    <div id="tag-list-@ViewBag.PersonId" class>
+        @Html.Partial("_TagList", Model)
+    </div>
+</div>

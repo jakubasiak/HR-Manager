@@ -43,6 +43,7 @@ namespace HR_Manager.Models
 
         public virtual ICollection<Candidate> Candidates { get; set; }
         public virtual ICollection<PersonNote> Notes { get; set; }
+        public virtual ICollection<SkillTag> Tags { get; set; }
 
         public string GetFullName()
         {

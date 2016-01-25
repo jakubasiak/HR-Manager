@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
+using System.Threading;
 
 namespace HR_Manager.Controllers
 {
@@ -47,7 +48,7 @@ namespace HR_Manager.Controllers
         }
         public async Task<ActionResult> AddNote(int id)
         {
-            return View("_AddNote", id);
+            return PartialView("_AddNote", id);
         }
         [HttpPost]
         public async Task<ActionResult> AddNote(int id, string note)
@@ -66,7 +67,90 @@ namespace HR_Manager.Controllers
             person.Notes.Add(pn);
             dao.UpdatatePerson(person);
 
-            return View("_AjaxLoaderView");
+            return RedirectToAction("ShowNotes", new { id = person.Id });
         }
+        public async Task<ActionResult> ShowNotes(int id)
+        {
+            Person person = dao.GetPersonById(id);
+            ICollection<PersonNote> model = person.Notes;
+
+            return PartialView("_ShowPersonNotes", model);
+        }
+
+        public async Task<ActionResult> EditPersonNote(int noteId)
+        {
+            PersonNote pn = dao.GetPersonNoteById(noteId);
+
+            return PartialView("_EditPersonNote", pn);
+        }
+        [HttpPost]
+        public async Task<ActionResult> EditPersonNote(int noteId, string text)
+        {
+            PersonNote pn = dao.GetPersonNoteById(noteId);
+            pn.Comment = text;
+            dao.UpdatatePersonNote(pn);
+            return PartialView("_SinglePersonNote", pn);
+        }
+        [HttpPost]
+        public async Task<ActionResult> DeletePersonNote(int noteId)
+        {
+            dao.RemovePersonNote(noteId);
+
+            return new EmptyResult();
+        }
+        public async Task<ActionResult> TagList(int id)
+        {
+            ICollection<SkillTag> model = dao.GetPersonById(id).Tags;
+            ViewBag.PersonId = id;
+
+            return PartialView("_AddTag", model);
+        }
+        public async Task<ActionResult> AddTag(int id, string newTag)
+        {
+            Person person = dao.GetPersonById(id);
+
+            List<string> tagList = newTag.Split(new char[] { ';', ' ', ',' }).ToList<string>();
+            foreach (var tag in tagList)
+            {
+                if (!string.IsNullOrEmpty(tag))
+                {
+                    SkillTag skillTag = dao.GetTagByTagName(tag.Trim());
+                    if (skillTag == null)
+                    {
+                        skillTag = new SkillTag()
+                        {
+                            Tag = tag.Trim()
+                        };
+                    }
+                    if (!person.Tags.Contains(skillTag))
+                        person.Tags.Add(skillTag);
+                }
+            }
+            dao.UpdatatePerson(person);
+
+            return PartialView("_TagList", person.Tags);
+        }
+        public async Task<ActionResult> DeleteTag(int personId, int tagId)
+        {
+            Person person = dao.GetPersonById(personId);
+            person.Tags.Remove(dao.GetTagById(tagId));
+
+            return new EmptyResult();
+        }
+        public async Task<ActionResult> Contact(int id)
+        {
+            Person person = dao.GetPersonById(id);
+            ContactViewModel model = new ContactViewModel()
+            {
+                Email = person.Email,
+                Name = person.Name,
+                PhoneNumber = person.PhoneNumber,
+                Surname = person.Surname,
+                Id = person.Id,
+            };
+
+            return PartialView("_ContactView", model);
+        }
+
     }
 }

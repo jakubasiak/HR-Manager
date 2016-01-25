@@ -291,6 +291,44 @@ namespace HR_Manager.Models
         }
         #endregion
 
+        #region PersonNote
+        public PersonNote GetPersonNoteById(int id)
+        {
+            return db.Notes.First(x => x.Id == id);
+        }
+
+        public bool RemovePersonNote(int id)
+        {
+            try
+            {
+                PersonNote pn = db.Notes.Find(id);
+                db.Notes.Remove(pn);
+                db.SaveChanges();
+                return true;
+
+            }
+            catch
+            {
+                //WriteErrorLog("Nieudany usunięcie ogłoszenia " + DateTime.Now);
+                return false;
+            }
+        }
+        public bool UpdatatePersonNote(PersonNote pn)
+        {
+            try
+            {
+                db.Entry(pn).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                //WriteErrorLog("Nieudana aktualizacja ogłoszenia " + DateTime.Now);
+                return false;
+            }
+        }
+        #endregion
+
         #region Pozostałe publiczne
 
         public bool SaveFileOnServer(string path, HttpPostedFileBase file)
@@ -306,8 +344,32 @@ namespace HR_Manager.Models
             }
         }
 
-        
 
+
+        #endregion
+
+        #region Tag
+        public SkillTag GetTagByTagName(string TagName)
+        {
+            try
+            {
+                SkillTag tag = db.Tags.Where(x => x.Tag == TagName).FirstOrDefault();
+
+                if (tag != null)
+                    return tag;
+                else
+                    return null;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
+        }
+        public SkillTag GetTagById(int id)
+        {
+            return db.Tags.First(x => x.Id == id);
+        }
         #endregion
 
         #region Pozostałe prywatne

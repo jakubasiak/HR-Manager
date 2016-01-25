@@ -1,0 +1,12 @@
+﻿@model HR_Manager.Models.PersonNote
+
+<div class="panel-heading">
+    <strong>@Model.Author - Dodano: @Model.Date.ToString("yyyy/MM/d HH:mm:ss")</strong>
+    <div style="display:inline; float:right;">
+        @Ajax.ActionLink("Edytuj", "EditPersonNote", "Candidate", new { noteId = Model.Id }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "pn-"+Model.Id.ToString(), InsertionMode = InsertionMode.Replace, LoadingElementId = "ajaxLoader" }) |
+        @Ajax.ActionLink("Usuń", "DeletePersonNote", "Candidate", new { noteId = Model.Id }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "pn-"+Model.Id.ToString(), InsertionMode = InsertionMode.Replace, OnSuccess = String.Format("panelRemove(\'pn-{0}\')", Model.Id), LoadingElementId = "ajaxLoader" })
+    </div>
+</div>
+<div class="panel-body">
+    <p>@Model.Comment</p>
+</div>

@@ -46,7 +46,20 @@ namespace HR_Manager.Models
         Person GetPersonById(int id);
         bool UpdatatePerson(Person person);
         #endregion
+
+        #region PersonNote
+        PersonNote GetPersonNoteById(int id);
+        bool RemovePersonNote(int id);
+        bool UpdatatePersonNote(PersonNote pn);
+        #endregion
+
+        #region Tag
+        SkillTag GetTagByTagName(string TagName);
+        SkillTag GetTagById(int id);
+        #endregion
+
         bool SaveFileOnServer(string path, HttpPostedFileBase file);
+        
 
 
 

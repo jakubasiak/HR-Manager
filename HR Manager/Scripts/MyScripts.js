@@ -18,10 +18,7 @@
 
         });
 
-        $(".ajaxLoaderTrigger").click(function () {
-            // $(this).closest("div").next("div").children("img").css("display","block");
-            $(this).closest("div").next().next().children("img").css("display", "block");
-        });
+
 
         //$("#MeetsRequirements").click(function () {
         //    $.ajax({
@@ -51,11 +48,13 @@ $(document).on('change', '.btn-file :file', function () {
 function clear() {
     $("#textInput").val("");
 };
+function clearInput(arg) {
+    $(arg).val("");
+};
 function panelRemove(arg) {
     $("#"+arg).remove();
 
 };
-function showAjaxLoader(x)
-{
-    $(x + " img").css("display", "block");
-}
+function hide(arg) {
+    $(arg).text("");
+};

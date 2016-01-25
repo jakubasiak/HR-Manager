@@ -142,7 +142,8 @@ namespace HR_Manager.Controllers
                     Surname = model.Surname,
                     Zip = model.Zip,
                     Candidates = new List<Candidate>(),
-                    Notes = new List<PersonNote>()                  
+                    Notes = new List<PersonNote>(),
+                    Tags = new List<SkillTag>(),                 
                 };
 
                 Recruitment recruitment = dao.GetRecruitmentById(model.OfferNumber);

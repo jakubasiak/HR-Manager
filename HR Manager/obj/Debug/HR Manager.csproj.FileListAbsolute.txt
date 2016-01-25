@@ -69,3 +69,4 @@ c:\users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\o
 C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR Manager.csprojResolveAssemblyReference.cache
 C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations.Initial.resources
 C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR Manager.csproj.GenerateResource.Cache
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160124.resources

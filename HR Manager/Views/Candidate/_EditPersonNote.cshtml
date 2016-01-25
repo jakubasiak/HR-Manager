@@ -1,0 +1,25 @@
+﻿@model HR_Manager.Models.PersonNote
+@using (Ajax.BeginForm("EditPersonNote", "Candidate", new
+{ noteId = Model.Id }, new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "pn-" + Model.Id,
+    InsertionMode = InsertionMode.Replace,
+
+
+
+}))
+{
+    <div class="panel-heading">
+        <strong>Edytuj notatkę</strong>
+    </div>
+    <div class="panel-body">
+
+        @Html.AntiForgeryToken()
+        <textarea type="text" class="form-control span6 col-md-8" name="text" rows="10">@Model.Comment</textarea>
+
+    </div>
+    <div class="panel-footer">
+        <input type="submit" class="btn btn-default" value="Zapisz" id="noteButton" />
+    </div>
+}

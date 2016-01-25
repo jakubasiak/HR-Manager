@@ -1,0 +1,11 @@
+﻿@model ICollection<HR_Manager.Models.SkillTag>
+
+@if (Model != null)
+{
+    foreach (var tag in Model)
+    {
+        <div id="tag-@tag.Id" style="display:inline;">
+            <p class="btn btn-info">@Ajax.ActionLink(tag.Tag +" X ", "DeleteTag", "Candidate", new { personId = ViewBag.PersonId, tagId = tag.Id }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "tag-" + tag.Id.ToString(), InsertionMode = InsertionMode.Replace,OnSuccess = String.Format("panelRemove(\'tag-{0}\')", tag.Id), LoadingElementId = "ajaxLoader" })</p>
+        </div>
+    }
+}
