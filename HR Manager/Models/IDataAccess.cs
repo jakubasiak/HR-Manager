@@ -56,6 +56,7 @@ namespace HR_Manager.Models
         #region Tag
         SkillTag GetTagByTagName(string TagName);
         SkillTag GetTagById(int id);
+        IQueryable<SkillTag> GetTagList();
         #endregion
 
         bool SaveFileOnServer(string path, HttpPostedFileBase file);

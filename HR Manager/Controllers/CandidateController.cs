@@ -107,35 +107,48 @@ namespace HR_Manager.Controllers
         }
         public async Task<ActionResult> AddTag(int id, string newTag)
         {
+
             Person person = dao.GetPersonById(id);
 
             List<string> tagList = newTag.Split(new char[] { ';', ' ', ',' }).ToList<string>();
             foreach (var tag in tagList)
             {
-                if (!string.IsNullOrEmpty(tag))
+                if ((!string.IsNullOrEmpty(tag)) && (person.Tags.Where(x => x.Tag == tag).Count() <= 0))
                 {
-                    SkillTag skillTag = dao.GetTagByTagName(tag.Trim());
-                    if (skillTag == null)
+                    SkillTag skillTag = new SkillTag()
                     {
-                        skillTag = new SkillTag()
-                        {
-                            Tag = tag.Trim()
-                        };
-                    }
-                    if (!person.Tags.Contains(skillTag))
-                        person.Tags.Add(skillTag);
+                        People = new List<Person>(),
+                        Tag = tag
+                    };
+                    skillTag.People.Add(person);
+                    person.Tags.Add(skillTag);
                 }
             }
             dao.UpdatatePerson(person);
-
+            ViewBag.PersonId = person.Id;
             return PartialView("_TagList", person.Tags);
         }
         public async Task<ActionResult> DeleteTag(int personId, int tagId)
         {
             Person person = dao.GetPersonById(personId);
-            person.Tags.Remove(dao.GetTagById(tagId));
+            SkillTag tag = dao.GetTagById(tagId);
+            person.Tags.Remove(tag);
+
+            dao.UpdatatePerson(person);
 
             return new EmptyResult();
+        }
+        public async Task<ActionResult> SearchTag(string term)
+        {
+
+            string[] tagList = dao.GetTagList().Where(x => x.Tag.Contains(term) || (x.Tag == term))
+                .Take(5)
+                .Select(x => x.Tag)
+                .Distinct()
+                .ToArray();
+
+            return Json(tagList, JsonRequestBehavior.AllowGet);
+            
         }
         public async Task<ActionResult> Contact(int id)
         {

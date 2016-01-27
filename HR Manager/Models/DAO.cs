@@ -370,6 +370,10 @@ namespace HR_Manager.Models
         {
             return db.Tags.First(x => x.Id == id);
         }
+        public IQueryable<SkillTag> GetTagList()
+        {
+            return db.Tags;
+        }
         #endregion
 
         #region Pozostałe prywatne

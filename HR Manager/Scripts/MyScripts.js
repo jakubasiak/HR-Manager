@@ -19,23 +19,6 @@
         });
 
 
-
-        //$("#MeetsRequirements").click(function () {
-        //    $.ajax({
-
-        //        url: '@Url.Action("MeetsRequirementsChange", "Candidate")',
-        //        type: "POST",
-        //        data: $("#MeetsRequirements").attr('checked', true),
-        //        //dataType: //type of response,
-        //        //success: function (data) {
-        //        //    //ur code here
-        //        //}
-        //        //error: function(data){
-
-        //        //}
-        //    });
-        //});
-
 });
 
 $(document).on('change', '.btn-file :file', function () {
@@ -49,7 +32,7 @@ function clear() {
     $("#textInput").val("");
 };
 function clearInput(arg) {
-    $(arg).val("");
+    $("#"+arg).val("");
 };
 function panelRemove(arg) {
     $("#"+arg).remove();

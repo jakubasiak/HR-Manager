@@ -4,16 +4,7 @@
     foreach (var pn in Model.Reverse())
     {
         <div class="panel panel-default" id="pn-@pn.Id">
-            <div class="panel-heading">
-                <strong>@pn.Author - Dodano: @pn.Date.ToString("yyyy/MM/d HH:mm:ss")</strong>
-                <div style="display:inline; float:right;">
-                    @Ajax.ActionLink("Edytuj", "EditPersonNote", "Candidate", new { noteId = pn.Id }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "pn-"+pn.Id.ToString(), InsertionMode = InsertionMode.Replace, LoadingElementId = "ajaxLoader" }) |
-                    @Ajax.ActionLink("Usuń", "DeletePersonNote", "Candidate", new { noteId = pn.Id }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "pn-"+pn.Id.ToString(), InsertionMode = InsertionMode.Replace, OnSuccess = String.Format("panelRemove(\'pn-{0}\')", pn.Id), LoadingElementId = "ajaxLoader" })
-                </div>
-            </div>
-            <div class="panel-body">
-                <p>@pn.Comment</p>
-            </div>
+            @Html.Partial("_SinglePersonNote", pn)
         </div>
     }
 }
