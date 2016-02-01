@@ -1,11 +1,12 @@
-﻿@model ICollection<HR_Manager.Models.SkillTag>
+﻿@model HR_Manager.Models.TagListViewModel
 
-@if (Model != null)
+
+@if (Model.Tags != null)
 {
-    foreach (var tag in Model)
+    foreach (var tag in Model.Tags)
     {
         <div id="tag-@tag.Id" style="display:inline;">
-            <p class="btn btn-info">@Ajax.ActionLink(tag.Tag +" X ", "DeleteTag", "Candidate", new { personId = ViewBag.PersonId, tagId = tag.Id }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "tag-" + tag.Id.ToString(), InsertionMode = InsertionMode.Replace,OnSuccess = String.Format("panelRemove(\'tag-{0}\')", tag.Id)})</p>
+            <p class="btn btn-info">@Ajax.ActionLink(tag.Tag +" X ", "DeleteTag", "Candidate", new { personId = Model.PersonId, tagId = tag.Id }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "tag-" + tag.Id.ToString(), InsertionMode = InsertionMode.Replace,OnSuccess = String.Format("panelRemove(\'tag-{0}\')", tag.Id)})</p>
         </div>
     }
 }

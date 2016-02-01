@@ -12,6 +12,7 @@ using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
 using System.Threading;
+using System.Net.Mail;
 
 namespace HR_Manager.Controllers
 {
@@ -100,8 +101,12 @@ namespace HR_Manager.Controllers
         }
         public async Task<ActionResult> TagList(int id)
         {
-            ICollection<SkillTag> model = dao.GetPersonById(id).Tags;
-            ViewBag.PersonId = id;
+            ICollection<SkillTag> tags = dao.GetPersonById(id).Tags;
+            TagListViewModel model = new TagListViewModel()
+            {
+                Tags = tags,
+                PersonId = id
+            };
 
             return PartialView("_AddTag", model);
         }
@@ -125,8 +130,13 @@ namespace HR_Manager.Controllers
                 }
             }
             dao.UpdatatePerson(person);
-            ViewBag.PersonId = person.Id;
-            return PartialView("_TagList", person.Tags);
+
+            TagListViewModel model = new TagListViewModel()
+            {
+                Tags = person.Tags,
+                PersonId = person.Id
+            };
+            return PartialView("_TagList", model);
         }
         public async Task<ActionResult> DeleteTag(int personId, int tagId)
         {
@@ -148,22 +158,44 @@ namespace HR_Manager.Controllers
                 .ToArray();
 
             return Json(tagList, JsonRequestBehavior.AllowGet);
-            
+
         }
-        public async Task<ActionResult> Contact(int id)
+        public async Task<ActionResult> Contact(int id, long recruitmentId)
         {
-            Person person = dao.GetPersonById(id);
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            Recruitment recr = dao.GetRecruitmentById(recruitmentId);
             ContactViewModel model = new ContactViewModel()
             {
-                Email = person.Email,
-                Name = person.Name,
-                PhoneNumber = person.PhoneNumber,
-                Surname = person.Surname,
-                Id = person.Id,
+                PersonId = id,
+                MessageSubject = "Rekrutacja na stanowisko " + recr.JobOffer.Name,
+                ReturnAddress = user.Email
             };
 
             return PartialView("_ContactView", model);
         }
+        [HttpPost]
+        public async Task<ActionResult> Contact(ContactViewModel model)
+        {
+
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            string adress = dao.GetPersonById(model.PersonId).Email;
+
+            IEmailSender es = new EmailSender();
+
+            bool result = es.SendEmail(model, user, adress);
+            if (result)
+            {
+                return Content("<p>Wiadomość została wysłana</p>");
+            }
+            else
+            {
+                return Content("<p>Nie udało się wysłać wiadomości</p>");
+            }
+        }
+
+
 
     }
+
 }
+

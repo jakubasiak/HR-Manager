@@ -4,8 +4,8 @@
         <strong>@Model.Person.GetFullName() - Zaplikował: @Model.ApplyTime.ToString("yyyy/MM/d HH:mm:ss")</strong>
 
         <div style="display:inline; float:right;">
-            <div onclick=@string.Format("hide({0})", "result_"+Model.Id) style="width:20px; height:8px; background-color:darkgrey; border-radius:3px;" class="vert-align">                
-            </div>            
+            <div onclick=@string.Format("hide({0})", "result_"+Model.Id) style="width:20px; height:8px; background-color:darkgrey; border-radius:3px;" class="vert-align">
+            </div>
         </div>
     </div>
     <div class="panel-body">
@@ -13,12 +13,12 @@
             <div class="panel">
                 <div class="panel-body">
                     @Html.ActionLink("Pobierz CV", "GetCV", "Candidate", new { path = Model.Person.CVPath, name = Model.Person.GetFullName() }, new { type = "button", @class = "btn btn-sm btn-default col-md-4" })
-                    @Ajax.ActionLink("Pokaż dane kandydata", "PartialShow", "Candidate", new { id = Model.Id }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result_" + Model.Id.ToString(), InsertionMode = InsertionMode.Replace, LoadingElementId= "ajaxLoader-can-" + Model.Id }, new { type = "button", @class = "btn btn-sm btn-default col-md-4" })
+                    @Ajax.ActionLink("Dane kandydata", "PartialShow", "Candidate", new { id = Model.Id }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result_" + Model.Id.ToString(), InsertionMode = InsertionMode.Replace, LoadingElementId = "ajaxLoader-can-" + Model.Id }, new { type = "button", @class = "btn btn-sm btn-default col-md-4" })
                     @Ajax.ActionLink("Dodaj notatkę", "AddNote", "Candidate", new { id = Model.Id }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result_" + Model.Id.ToString(), InsertionMode = InsertionMode.Replace, LoadingElementId = "ajaxLoader-can-" + Model.Id }, new { type = "button", @class = "btn btn-sm btn-default col-md-4" })
 
                     @Ajax.ActionLink("Pokaż notatki", "ShowNotes", "Candidate", new { id = Model.Id }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result_" + Model.Id.ToString(), InsertionMode = InsertionMode.Replace, LoadingElementId = "ajaxLoader-can-" + Model.Id }, new { type = "button", @class = "btn btn-sm btn-default col-md-4" })
                     @Ajax.ActionLink("Dodaj tagi", "TagList", "Candidate", new { id = Model.Id }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result_" + Model.Id.ToString(), InsertionMode = InsertionMode.Replace, LoadingElementId = "ajaxLoader-can-" + Model.Id }, new { type = "button", @class = "btn btn-sm btn-default col-md-4 " })
-                    @Ajax.ActionLink("Kontakt", "Contact", "Candidate", new { id = Model.Id }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result_" + Model.Id.ToString(), InsertionMode = InsertionMode.Replace, LoadingElementId = "ajaxLoader-can-" + Model.Id }, new { type = "button", @class = "btn btn-sm btn-default col-md-4 " })
+                    @Ajax.ActionLink("Kontakt", "Contact", "Candidate", new { id = Model.Id, recruitmentId = Model.Recruitment.Id }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result_" + Model.Id.ToString(), InsertionMode = InsertionMode.Replace, LoadingElementId = "ajaxLoader-can-" + Model.Id }, new { type = "button", @class = "btn btn-sm btn-default col-md-4 " })
                 </div>
             </div>
         </div>

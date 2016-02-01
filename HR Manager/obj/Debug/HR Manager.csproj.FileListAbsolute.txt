@@ -73,3 +73,96 @@ C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\o
 C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160126.resources
 C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160126_1.resources
 C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160127.resources
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\RazorEngine.dll
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\RazorEngine.pdb
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\RazorEngine.xml
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160130.resources
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\itextsharp.dll
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\itextsharp.xmlworker.dll
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\itextsharp.xml
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Rotativa.Core.dll
+C:\Users\kubak_000\documents\visual studio 2015\Projects\HR Manager\HR Manager\bin\Rotativa.MVC.dll
+E:\HR Manager\HR Manager\bin\roslyn\csc.exe
+E:\HR Manager\HR Manager\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\HR Manager\HR Manager\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\HR Manager\HR Manager\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\HR Manager\HR Manager\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\HR Manager\HR Manager\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\HR Manager\HR Manager\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\HR Manager\HR Manager\bin\roslyn\System.Collections.Immutable.dll
+E:\HR Manager\HR Manager\bin\roslyn\System.Reflection.Metadata.dll
+E:\HR Manager\HR Manager\bin\roslyn\vbc.exe
+E:\HR Manager\HR Manager\bin\roslyn\VBCSCompiler.exe
+E:\HR Manager\HR Manager\bin\roslyn\VBCSCompiler.exe.config
+E:\HR Manager\HR Manager\bin\HR Manager.dll.config
+E:\HR Manager\HR Manager\bin\HR Manager.dll
+E:\HR Manager\HR Manager\bin\HR Manager.pdb
+E:\HR Manager\HR Manager\bin\Antlr3.Runtime.dll
+E:\HR Manager\HR Manager\bin\EntityFramework.dll
+E:\HR Manager\HR Manager\bin\EntityFramework.SqlServer.dll
+E:\HR Manager\HR Manager\bin\itextsharp.dll
+E:\HR Manager\HR Manager\bin\itextsharp.xmlworker.dll
+E:\HR Manager\HR Manager\bin\Microsoft.AspNet.Identity.Core.dll
+E:\HR Manager\HR Manager\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\HR Manager\HR Manager\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\HR Manager\HR Manager\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\HR Manager\HR Manager\bin\Microsoft.Owin.dll
+E:\HR Manager\HR Manager\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\HR Manager\HR Manager\bin\Microsoft.Owin.Security.Cookies.dll
+E:\HR Manager\HR Manager\bin\Microsoft.Owin.Security.dll
+E:\HR Manager\HR Manager\bin\Microsoft.Owin.Security.Facebook.dll
+E:\HR Manager\HR Manager\bin\Microsoft.Owin.Security.Google.dll
+E:\HR Manager\HR Manager\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\HR Manager\HR Manager\bin\Microsoft.Owin.Security.OAuth.dll
+E:\HR Manager\HR Manager\bin\Microsoft.Owin.Security.Twitter.dll
+E:\HR Manager\HR Manager\bin\Microsoft.Web.Infrastructure.dll
+E:\HR Manager\HR Manager\bin\Newtonsoft.Json.dll
+E:\HR Manager\HR Manager\bin\Owin.dll
+E:\HR Manager\HR Manager\bin\RazorEngine.dll
+E:\HR Manager\HR Manager\bin\Rotativa.Core.dll
+E:\HR Manager\HR Manager\bin\Rotativa.MVC.dll
+E:\HR Manager\HR Manager\bin\System.Web.Helpers.dll
+E:\HR Manager\HR Manager\bin\System.Web.Mvc.dll
+E:\HR Manager\HR Manager\bin\System.Web.Optimization.dll
+E:\HR Manager\HR Manager\bin\System.Web.Razor.dll
+E:\HR Manager\HR Manager\bin\System.Web.WebPages.Deployment.dll
+E:\HR Manager\HR Manager\bin\System.Web.WebPages.dll
+E:\HR Manager\HR Manager\bin\System.Web.WebPages.Razor.dll
+E:\HR Manager\HR Manager\bin\WebGrease.dll
+E:\HR Manager\HR Manager\bin\itextsharp.xml
+E:\HR Manager\HR Manager\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\HR Manager\HR Manager\bin\RazorEngine.pdb
+E:\HR Manager\HR Manager\bin\RazorEngine.xml
+E:\HR Manager\HR Manager\bin\System.Web.Helpers.xml
+E:\HR Manager\HR Manager\bin\System.Web.Mvc.xml
+E:\HR Manager\HR Manager\bin\System.Web.Optimization.xml
+E:\HR Manager\HR Manager\bin\System.Web.Razor.xml
+E:\HR Manager\HR Manager\bin\System.Web.WebPages.xml
+E:\HR Manager\HR Manager\bin\System.Web.WebPages.Deployment.xml
+E:\HR Manager\HR Manager\bin\System.Web.WebPages.Razor.xml
+E:\HR Manager\HR Manager\bin\Antlr3.Runtime.pdb
+E:\HR Manager\HR Manager\bin\Newtonsoft.Json.xml
+E:\HR Manager\HR Manager\bin\EntityFramework.xml
+E:\HR Manager\HR Manager\bin\EntityFramework.SqlServer.xml
+E:\HR Manager\HR Manager\bin\Microsoft.AspNet.Identity.Core.xml
+E:\HR Manager\HR Manager\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\HR Manager\HR Manager\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\HR Manager\HR Manager\bin\Microsoft.Owin.xml
+E:\HR Manager\HR Manager\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\HR Manager\HR Manager\bin\Microsoft.Owin.Security.xml
+E:\HR Manager\HR Manager\bin\Microsoft.Owin.Security.Facebook.xml
+E:\HR Manager\HR Manager\bin\Microsoft.Owin.Security.Cookies.xml
+E:\HR Manager\HR Manager\bin\Microsoft.Owin.Security.OAuth.xml
+E:\HR Manager\HR Manager\bin\Microsoft.Owin.Security.Google.xml
+E:\HR Manager\HR Manager\bin\Microsoft.Owin.Security.Twitter.xml
+E:\HR Manager\HR Manager\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\HR Manager\HR Manager\obj\Debug\HR Manager.csprojResolveAssemblyReference.cache
+E:\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations.Initial.resources
+E:\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160124.resources
+E:\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160126.resources
+E:\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160126_1.resources
+E:\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160127.resources
+E:\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160130.resources
+E:\HR Manager\HR Manager\obj\Debug\HR Manager.csproj.GenerateResource.Cache
+E:\HR Manager\HR Manager\obj\Debug\HR Manager.dll
+E:\HR Manager\HR Manager\obj\Debug\HR Manager.pdb

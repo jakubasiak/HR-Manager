@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,14 +8,13 @@ namespace HR_Manager.Models
 {
     public class ContactViewModel
     {
-        public int Id { get; set; }
+        public int PersonId { get; set; }
 
-        public string Name { get; set; }
-
-        public string Surname { get; set; }
-
-        public string Email { get; set; }
-
-        public string PhoneNumber { get; set; }
+        [Display(Name ="Adres zwrotny:")]
+        public string ReturnAddress { get; set; }
+        [Display(Name = "Temat:")]
+        public string MessageSubject { get; set; }
+        [Display(Name = "Wiadomość:")]
+        public string Message { get; set; }
     }
 }

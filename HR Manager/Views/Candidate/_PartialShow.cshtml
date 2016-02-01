@@ -7,7 +7,7 @@
         @if (Model.Person.PhoneNumber != null)
         {
             <dt>
-                @Html.DisplayNameFor(model => model.Person.PhoneNumber)
+                <strong>@Html.DisplayNameFor(model => model.Person.PhoneNumber)</strong>
             </dt>
             <dd>
                 @Html.DisplayFor(model => model.Person.PhoneNumber)
@@ -16,7 +16,7 @@
         @if (Model.Person.Email != null)
         {
             <dt>
-                @Html.DisplayNameFor(model => model.Person.Email)
+                <strong>@Html.DisplayNameFor(model => model.Person.Email)</strong>
             </dt>
             <dd>
                 @Html.DisplayFor(model => model.Person.Email)
@@ -25,7 +25,7 @@
         @if (Model.Person.GetAdress() != null)
         {
             <dt>
-                Adres
+                <strong>Adres</strong>
             </dt>
             <dd>
                 @Model.Person.GetAdress()
@@ -34,7 +34,7 @@
         @if (Model.FinancialExpectations != null)
         {
             <dt>
-                @Html.DisplayNameFor(model => model.FinancialExpectations)
+                <strong>@Html.DisplayNameFor(model => model.FinancialExpectations)</strong>
             </dt>
 
             <dd>
@@ -45,7 +45,7 @@
 
 
         <dt>
-            @Html.DisplayNameFor(model => model.ReadyToMove)
+            <strong>@Html.DisplayNameFor(model => model.ReadyToMove)</strong>
         </dt>
 
         <dd>
@@ -55,7 +55,7 @@
 
 
         <dt>
-            @Html.DisplayNameFor(model => model.Invited)
+            <strong>@Html.DisplayNameFor(model => model.Invited)</strong>
         </dt>
 
         <dd>
@@ -63,7 +63,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ApplyTime)
+            <strong>@Html.DisplayNameFor(model => model.ApplyTime)</strong>
         </dt>
 
         <dd>
@@ -75,14 +75,14 @@
 
     <dl class="dl-horizontal">
         <dt class="vert-align">
-            @Html.DisplayNameFor(model => model.MeetsRequirements)
+            <strong>@Html.DisplayNameFor(model => model.MeetsRequirements)</strong>
         </dt>
 
         <dd class="vert-align">
 
 
             <div class="btn-group">
-                <button type="button" class="btn btn-default"  >
+                <button type="button" class="btn btn-default">
                     <div id="divToReplace_@Model.Id">
                         @if (Model.MeetsRequirements)
                         {
@@ -98,7 +98,7 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                    <li class="yesOrNo">@Ajax.ActionLink("Tak", "MeetsRequirementsChange", "Candidate", new {canndidateId = Model.Id, choice = true }, new AjaxOptions { HttpMethod = "POST" })</li>
+                    <li class="yesOrNo">@Ajax.ActionLink("Tak", "MeetsRequirementsChange", "Candidate", new { canndidateId = Model.Id, choice = true }, new AjaxOptions { HttpMethod = "POST" })</li>
                     <li class="yesOrNo">@Ajax.ActionLink("Nie", "MeetsRequirementsChange", "Candidate", new { canndidateId = Model.Id, choice = false }, new AjaxOptions { HttpMethod = "POST" })</li>
                 </ul>
             </div>
@@ -107,13 +107,13 @@
 
 </div>
 <p>
-    @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id })
+    @Html.ActionLink("Edytuj", "Edit", "People", new { id = Model.Id })
 </p>
 <script>
     //$(document).ready(function(){
-        $("li.yesOrNo").click(function () {
-            text = $(this).text();
-            $("#divToReplace_@Model.Id").text(text);
-        });
+    $("li.yesOrNo").click(function () {
+        text = $(this).text();
+        $("#divToReplace_@Model.Id").text(text);
+    });
     //});
 </script>

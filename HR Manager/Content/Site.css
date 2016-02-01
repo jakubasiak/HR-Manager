@@ -17,7 +17,9 @@ body {
     background-position: right top;
     background-attachment: fixed;
 }
-
+strong{
+    font-family: Lato-Medium;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;

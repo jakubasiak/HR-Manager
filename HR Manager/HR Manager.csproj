@@ -44,11 +44,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.8.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.8\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.0\lib\itextsharp.xmlworker.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RazorEngine, Version=3.4.1.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.4.1\lib\net45\RazorEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rotativa.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.Core.2.0.0\lib\net45\Rotativa.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rotativa.MVC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.MVC.2.0.3\lib\net45\Rotativa.MVC.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -173,6 +193,7 @@
     <Compile Include="Controllers\CareerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\RecruitmentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -197,12 +218,18 @@
     <Compile Include="Migrations\201601271513353_20160127.Designer.cs">
       <DependentUpon>201601271513353_20160127.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601300900268_20160130.cs" />
+    <Compile Include="Migrations\201601300900268_20160130.Designer.cs">
+      <DependentUpon>201601300900268_20160130.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplyViewModel.cs" />
     <Compile Include="Models\Candidate.cs" />
     <Compile Include="Models\ContactViewModel.cs" />
+    <Compile Include="Models\EmailSender.cs" />
+    <Compile Include="Models\IEmailSender.cs" />
     <Compile Include="Models\PersonNote.cs" />
     <Compile Include="Models\DAO.cs" />
     <Compile Include="Models\GIDOLog.cs" />
@@ -216,6 +243,7 @@
     <Compile Include="Models\RecruitmentEvent.cs" />
     <Compile Include="Models\RecruitmentListViewModel.cs" />
     <Compile Include="Models\SkillTag.cs" />
+    <Compile Include="Models\TagListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\AppConfig.cs" />
@@ -275,6 +303,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\Fonts\Lato-Light.ttf" />
@@ -289,6 +318,7 @@
     <Content Include="Content\Fonts\Lato-Medium.woff" />
     <Content Include="Content\Fonts\Lato-MediumItalic.woff" />
     <Content Include="Content\Fonts\Lato-Regular.woff" />
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -363,6 +393,14 @@
     <Content Include="Views\Candidate\_AddTag.cshtml" />
     <Content Include="Views\Candidate\_TagList.cshtml" />
     <Content Include="Views\Candidate\_ContactView.cshtml" />
+    <Content Include="Views\People\Create.cshtml" />
+    <Content Include="Views\People\Delete.cshtml" />
+    <Content Include="Views\People\Edit.cshtml" />
+    <Content Include="Views\People\PeopleList.cshtml" />
+    <Content Include="Views\Career\RecruitmentRaportView.cshtml" />
+    <Content Include="Views\Shared\_RaportLayout.cshtml" />
+    <Content Include="Views\People\_SelectedPeopleList.cshtml" />
+    <Content Include="Views\People\PersonDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\CV\" />
@@ -392,6 +430,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601271513353_20160127.resx">
       <DependentUpon>201601271513353_20160127.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601300900268_20160130.resx">
+      <DependentUpon>201601300900268_20160130.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

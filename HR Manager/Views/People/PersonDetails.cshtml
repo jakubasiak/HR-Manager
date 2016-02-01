@@ -1,0 +1,114 @@
+﻿@model HR_Manager.Models.Person
+
+@{
+    ViewBag.Title = Model.GetFullName();
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Dane osobowe</h3>
+    </div>
+    <div class="panel-body">
+        <div>
+
+            <dl class="dl-horizontal vert-align">
+                <dt>
+                    <strong>@Html.DisplayNameFor(model => model.Name)</strong>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    <strong>@Html.DisplayNameFor(model => model.Surname)</strong>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Surname)
+                </dd>
+
+                <dt>
+                    <strong>@Html.DisplayNameFor(model => model.Email)</strong>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt>
+                    <strong> @Html.DisplayNameFor(model => model.PhoneNumber)</strong>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PhoneNumber)
+                </dd>
+
+                <dt>
+                    <strong>@Html.DisplayNameFor(model => model.Street)</strong>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Street)
+                </dd>
+
+                <dt>
+                    <strong>@Html.DisplayNameFor(model => model.Zip)</strong>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Zip)
+                </dd>
+
+                <dt>
+                    <strong>@Html.DisplayNameFor(model => model.City)</strong>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.City)
+                </dd>
+
+                <dt>
+                    <strong>@Html.DisplayNameFor(model => model.CVPath)</strong>
+                </dt>
+
+                <dd>
+                    @Html.ActionLink("Pobierz", "GetCV", "Candidate", new { path = Model.CVPath, name = Model.GetFullName() }, new { type = "button", @class = "btn btn-sm btn-default" })
+                </dd>
+
+                <dt>
+                    <strong>@Html.DisplayNameFor(model => model.PersonalDataProcessing)</strong>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PersonalDataProcessing)
+                </dd>
+
+                <dt>
+                    <strong>@Html.DisplayNameFor(model => model.CanContact)</strong>
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CanContact)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+</div>
+
+@if (Model.Notes != null)
+{
+    foreach (var pn in Model.Notes.Reverse())
+    {
+        <div class="panel panel-default" id="pn-@pn.Id">
+            @Html.Partial("~/Views/Candidate/_SinglePersonNote.cshtml", pn)
+        </div>
+    }
+}

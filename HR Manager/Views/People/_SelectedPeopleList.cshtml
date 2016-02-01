@@ -1,0 +1,51 @@
+﻿@using HR_Manager.Models
+@model IEnumerable<HR_Manager.Models.Person>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Id)</th>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Surname)</th>
+            <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+            <th>@Html.DisplayNameFor(model => model.Email)</th>
+            <th>@Html.DisplayNameFor(model => model.Tags)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td class="vert-align">
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td class="vert-align">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td class="vert-align">
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td class="vert-align">
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td class="vert-align">
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td class="vert-align">
+                    @Html.Partial("~/Views/Candidate/_TagList.cshtml", new TagListViewModel() { Tags = item.Tags, PersonId = item.Id })
+
+
+                </td>
+                <td>
+                    <div class="btn-group btn">
+                        <a class="btn btn-md btn-default" href="@Url.Action("Edit","People",new {id = item.Id })" type="button">Edytuj</a>
+                        <a class="btn btn-md btn-default" href="@Url.Action("Details","People",new {id = item.Id })" type="button">Pokaż</a>
+                        <a class="btn btn-md btn-default" href="@Url.Action("Delete","People",new {id = item.Id })" type="button">Usuń</a>
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+

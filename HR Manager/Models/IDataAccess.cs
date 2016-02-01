@@ -45,6 +45,7 @@ namespace HR_Manager.Models
         bool SavePerson(Person person);
         Person GetPersonById(int id);
         bool UpdatatePerson(Person person);
+        IEnumerable<Person> GetPeopleList();
         #endregion
 
         #region PersonNote

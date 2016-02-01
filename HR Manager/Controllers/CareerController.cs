@@ -1,5 +1,7 @@
 ﻿using HR_Manager.Models;
 using HR_Manager.Utils;
+using iTextSharp.text;
+using Rotativa.MVC;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -182,6 +184,17 @@ namespace HR_Manager.Controllers
             {
                 return View(model);
             }
+        }
+        public ActionResult GetRaport(long id)
+        {
+
+            var model = dao.GetRecruitmentById(id);
+            var pdf = new ViewAsPdf("RecruitmentRaportView", model);
+            pdf.FileName = "Raport z rekrutacji " + model.Id;
+            pdf.MasterName = "Raport z rekrutacji " + model.Id;
+            pdf.RotativaOptions.IsBackgroundDisabled = false;
+
+            return new ViewAsPdf("RecruitmentRaportView", model);
         }
     }
 }

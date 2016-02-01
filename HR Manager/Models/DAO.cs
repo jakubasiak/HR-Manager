@@ -52,30 +52,6 @@ namespace HR_Manager.Models
             }
         }
 
-        //public bool RemoveJobOffer(long id)
-        //{
-        //    try
-        //    {
-        //        Recruitment r = db.Recruitments.Find(id);
-        //        if(r!=null)
-        //        {
-        //            r.JobOffer = null;
-        //        }
-
-        //        JobOffer jo = db.JobOffers.Find(id);
-        //        db.JobOffers.Remove(jo);
-        //        db.SaveChanges();
-        //        return true;
-
-        //    }
-        //    catch
-        //    {
-        //        //WriteErrorLog("Nieudany usunięcie ogłoszenia " + DateTime.Now);
-        //        return false;
-        //    }
-
-        //}
-
         public JobOffer GetJobOfferByOfferNumber(long id)
         {
             //return db.JobOffers.Where(oferr => oferr.OfferNumber.Equals(id)).First();
@@ -289,6 +265,11 @@ namespace HR_Manager.Models
                 return false;
             }
         }
+        public IEnumerable<Person> GetPeopleList()
+        {
+            return db.People;
+        }
+
         #endregion
 
         #region PersonNote

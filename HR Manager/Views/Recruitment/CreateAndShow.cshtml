@@ -74,6 +74,7 @@
                 <div class="btn-group-vertical">
                     @Html.ActionLink("Edytuj", "Edit", "Career", new { id = Model.JobOffer.OfferNumber }, new { type = "button", @class = "btn btn-lg btn-default" })
                     @Html.ActionLink("Pokaż", "Show", "Career", new { id = Model.JobOffer.OfferNumber }, new { type = "button", @class = "btn btn-lg btn-default" })
+                    @Html.ActionLink("Raport", "GetRaport", "Career", new { id = Model.Id }, new { type = "button", @class = "btn btn-lg btn-default" })
                 </div>
             </div>
         </div>

@@ -1,0 +1,97 @@
+﻿@model HR_Manager.Models.Recruitment
+@{
+    ViewBag.Title = "RecruitmentRaportView";
+    Layout = "~/Views/Shared/_RaportLayout.cshtml";
+}
+
+<div class="page-header">
+    HR Manager - Raport z rekrutacji
+</div>
+
+<div>
+    <h2 class="well well-lg">Raport z rekrutacji nr: @Model.Id</h2>
+    <div style="margin-left:30px">
+        <p>Rekrutacje rozpoczęto: @Model.StartTime.ToString("yyyy/MM/d HH:mm:ss") </p>
+        @if (Model.JobOffer.Current)
+        {
+            <p>Rekrutacja jest kontynuwana i trwa od @((DateTime.Now - Model.StartTime).Days) dni.</p>
+        }
+        else
+        {
+            <p>Rekrutacje zakończono: @Model.EndTime.ToString("yyyy/MM/d HH:mm:ss") </p>
+            <p>Rekrutacja trwała łącznie przez @(Model.EndTime - Model.StartTime).Days</p>
+        }
+
+        <p>W rekrutacji wzieło udział: @Model.Candidate.Count() kandydatów</p>
+    </div>
+</div>
+
+<div>
+    <h2 class="well well-lg">Ogłoszenie</h2>
+    <div style="margin-left:30px">
+        <p>W rekrutacji wykożystano ogłoszenie o następującej treści:</p>
+        <br />
+        <h3>@Model.JobOffer.Name</h3>
+        <p>Lokalizacja: @Model.JobOffer.Location</p>
+
+        @if (!string.IsNullOrEmpty(@Model.JobOffer.AboutCompany))
+        {
+            <div>
+                <h4><strong>O firmie</strong></h4>
+                <p>@Html.Raw(@Model.JobOffer.AboutCompany)</p>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(@Model.JobOffer.JobDescription))
+        {
+            <div>
+                <h4><strong>Opis stanowiska</strong></h4>
+                <p>@Html.Raw(@Model.JobOffer.JobDescription)</p>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(@Model.JobOffer.Expectations))
+        {
+            <div>
+                <h4><strong>Oczekiwania wobec kandydata</strong></h4>
+                <p>@Html.Raw(@Model.JobOffer.Expectations)</p>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(@Model.JobOffer.Offer))
+        {
+            <div>
+                <h4><strong>Oferujemy</strong></h4>
+                <p>@Html.Raw(@Model.JobOffer.Offer)</p>
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+    <h2 class="well well-lg">Przebieg rekrutacji</h2>
+    <div style="margin-left:30px">
+        <p>Rekrutacja przebiegała w następujący sposób:</p>
+        <br />
+        @foreach (var re in Model.Events.Reverse())
+        {
+            <div>
+                <p>@re.Author - Dodano: @re.Time.ToString("yyyy/MM/d HH:mm:ss")</p>
+
+                <stron>@re.Event</stron>
+                <hr />
+            </div>
+
+        }
+    </div>
+</div>
+<div>
+    <h2 class="well well-lg">Kandydaci</h2>
+    <div style="margin-left:30px">
+        <p>W rekrutacji wzieli udział następujący kandydaci:</p>
+        <br />
+        @foreach (var can in Model.Candidate)
+        {
+            <div>
+                <p><strong>@can.Person.Name @can.Person.Surname</strong> - Zaplikował/a: @can.ApplyTime.ToString("yyyy/MM/d HH:mm:ss")</p>
+            </div>
+        }
+    </div>
+</div>
