@@ -81,110 +81,141 @@ namespace HR_Manager.Controllers
             }
         }
 
-                // GET: People/Details/5
-                public ActionResult Details(int? id)
+        // GET: People/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Person person = dao.GetPersonById((int)id);
+            if (person == null)
+            {
+                return HttpNotFound();
+            }
+            return View("PersonDetails", person);
+        }
+
+        // GET: People/Create
+        public ActionResult Create()
+        {
+            return View("CreatePerson");
+        }
+
+        // POST: People/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(PersonViewModel personVM)
+        {
+            if (ModelState.IsValid)
+            {
+                bool cvSaved = true;
+                string path = null;
+                if (personVM.CVFile != null)
                 {
-                    if (id == null)
-                    {
-                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                    }
-                    Person person = dao.GetPersonById((int) id);
-                    if (person == null)
-                    {
-                        return HttpNotFound();
-                    }
-                    return View("PersonDetails", person);
+                    path = Utils.Utils.CreatePath(Server, personVM.CVFile, Utils.AppConfig.CVFolderRelative);
+                    cvSaved = dao.SaveFileOnServer(path, personVM.CVFile);
                 }
+                Person person = new Person()
+                {
+                    CanContact = personVM.CanContact,
+                    City = personVM.City,
+                    CVPath = path,
+                    Email = personVM.Email,
+                    Name = personVM.Name,
+                    PersonalDataProcessing = personVM.PersonalDataProcessing,
+                    PhoneNumber = personVM.PhoneNumber,
+                    Street = personVM.Street,
+                    Surname = personVM.Surname,
+                    Zip = personVM.Zip,
+                    Candidates = new List<Candidate>(),
+                    Notes = new List<PersonNote>(),
+                    Tags = new List<SkillTag>(),
+                };
+
+                List<string> tagList = personVM.Tags.Split(new char[] { ';', ' ', ',' }).ToList<string>();
+                foreach (var tag in tagList)
+                {
+                    if ((!string.IsNullOrEmpty(tag)) && (person.Tags.Where(x => x.Tag == tag).Count() <= 0))
+                    {
+                        SkillTag skillTag = new SkillTag()
+                        {
+                            People = new List<Person>(),
+                            Tag = tag
+                        };
+                        skillTag.People.Add(person);
+                        person.Tags.Add(skillTag);
+                    }
+                }
+
+                dao.SavePerson(person);
+
+                return RedirectToAction("Index", "People");
+            }
+
+            return View("CreatePerson", personVM);
+        }
+
+                        // GET: People/Edit/5
+                        public ActionResult Edit(int? id)
+                        {
+                            if (id == null)
+                            {
+                                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                            }
+                            Person person = dao.GetPersonById((int)id);
+                            if (person == null)
+                            {
+                                return HttpNotFound();
+                            }
+                            return View("PersonEdit", person);
+                        }
+
+                        // POST: People/Edit/5
+                        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+                        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+                        [HttpPost]
+                        [ValidateAntiForgeryToken]
+                        public ActionResult Edit(Person person)
+                        {
+                            if (ModelState.IsValid)
+                            {
+                                dao.UpdatatePerson(person);
+                                return RedirectToAction("Index");
+                            }
+                            return View(person);
+                        }
         /*
-                // GET: People/Create
-                public ActionResult Create()
-                {
-                    return View();
-                }
+                        // GET: People/Delete/5
+                        public ActionResult Delete(int? id)
+                        {
+                            if (id == null)
+                            {
+                                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                            }
+                            Person person = db.People.Find(id);
+                            if (person == null)
+                            {
+                                return HttpNotFound();
+                            }
+                            return View(person);
+                        }
 
-                // POST: People/Create
-                // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-                // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-                [HttpPost]
-                [ValidateAntiForgeryToken]
-                public ActionResult Create([Bind(Include = "Id,Name,Surname,Email,PhoneNumber,Street,Zip,City,CVPath,PersonalDataProcessing,CanContact")] Person person)
-                {
-                    if (ModelState.IsValid)
-                    {
-                        db.People.Add(person);
-                        db.SaveChanges();
-                        return RedirectToAction("Index");
-                    }
+                        // POST: People/Delete/5
+                        [HttpPost, ActionName("Delete")]
+                        [ValidateAntiForgeryToken]
+                        public ActionResult DeleteConfirmed(int id)
+                        {
+                            Person person = db.People.Find(id);
+                            db.People.Remove(person);
+                            db.SaveChanges();
+                            return RedirectToAction("Index");
+                        }
+                    */
 
-                    return View(person);
-                }
 
-                // GET: People/Edit/5
-                public ActionResult Edit(int? id)
-                {
-                    if (id == null)
-                    {
-                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                    }
-                    Person person = db.People.Find(id);
-                    if (person == null)
-                    {
-                        return HttpNotFound();
-                    }
-                    return View(person);
-                }
 
-                // POST: People/Edit/5
-                // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-                // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-                [HttpPost]
-                [ValidateAntiForgeryToken]
-                public ActionResult Edit([Bind(Include = "Id,Name,Surname,Email,PhoneNumber,Street,Zip,City,CVPath,PersonalDataProcessing,CanContact")] Person person)
-                {
-                    if (ModelState.IsValid)
-                    {
-                        db.Entry(person).State = EntityState.Modified;
-                        db.SaveChanges();
-                        return RedirectToAction("Index");
-                    }
-                    return View(person);
-                }
-
-                // GET: People/Delete/5
-                public ActionResult Delete(int? id)
-                {
-                    if (id == null)
-                    {
-                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                    }
-                    Person person = db.People.Find(id);
-                    if (person == null)
-                    {
-                        return HttpNotFound();
-                    }
-                    return View(person);
-                }
-
-                // POST: People/Delete/5
-                [HttpPost, ActionName("Delete")]
-                [ValidateAntiForgeryToken]
-                public ActionResult DeleteConfirmed(int id)
-                {
-                    Person person = db.People.Find(id);
-                    db.People.Remove(person);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-
-                protected override void Dispose(bool disposing)
-                {
-                    if (disposing)
-                    {
-                        db.Dispose();
-                    }
-                    base.Dispose(disposing);
-                }
-
-            */
     }
 }

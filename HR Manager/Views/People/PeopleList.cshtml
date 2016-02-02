@@ -31,29 +31,31 @@
         @Html.AntiForgeryToken()
 
 
-
-        <label for="candidateSearch">Szukaj kandydatów:</label>
-            <input type="text" class="form-control" id="candidateSearch" name="candidateSearch" data-autocomplete-url="@Url.Action("FindPerson","People")">
-            <input type="submit" value="Szukaj" class="btn btn-default" id="btn-candidateSearch" />
-
-
-    }
-
-    <div class="panel panel-default">
-        <div class="panel-heading"><strong>Kandydaci</strong></div>
-        @if (Model.Count() > 0)
-        {
-            <div class="panel-body" id="candidatePanelList">
-                @Html.Partial("_SelectedPeopleList", Model)
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <label for="candidateSearch"><strong>Szukaj kandydatów:</strong></label>
+                <input type="text" class="form-control" id="candidateSearch" name="candidateSearch" data-autocomplete-url="@Url.Action("FindPerson","People")">
+                <input type="submit" value="Szukaj" class="btn btn-default" id="btn-candidateSearch" />
             </div>
-        }
-        else
-        {
-            <p>Brak kandydatów w bazie personalnej</p>
-        }
-    </div>
+        </div>
 
-</div>
+            }
+
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong>Kandydaci</strong></div>
+                @if (Model.Count() > 0)
+                {
+                    <div class="panel-body" id="candidatePanelList">
+                        @Html.Partial("_SelectedPeopleList", Model)
+                    </div>
+                }
+                else
+                {
+                    <p>Brak kandydatów w bazie personalnej</p>
+                }
+            </div>
+
+        </div>
 @section scripts
 {
 <script type="text/javascript" language="javascript">

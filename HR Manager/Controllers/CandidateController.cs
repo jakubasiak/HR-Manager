@@ -21,9 +21,17 @@ namespace HR_Manager.Controllers
     {
         public ActionResult GetCV(string path, string name)
         {
-            byte[] fileBytes = System.IO.File.ReadAllBytes(path);
-            string fileName = "CV - " + name + ".pdf";
-            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+            if(System.IO.File.Exists(path))
+            {
+                byte[] fileBytes = System.IO.File.ReadAllBytes(path);
+                string fileName = "CV - " + name + ".pdf";
+
+                return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
         }
 
         public async Task<ActionResult> PartialShow(int id)
@@ -110,6 +118,7 @@ namespace HR_Manager.Controllers
 
             return PartialView("_AddTag", model);
         }
+        [HttpPost]
         public async Task<ActionResult> AddTag(int id, string newTag)
         {
 

@@ -1,15 +1,16 @@
 ﻿@model HR_Manager.Models.TagListViewModel
 <div>
     @using (Ajax.BeginForm("AddTag", "Candidate", new AjaxOptions
-    {
-        HttpMethod = "POST",
-        UpdateTargetId = "tag-list-" + Model.PersonId,
-        InsertionMode = InsertionMode.Replace,
-        OnSuccess = string.Format("clearInput(\'{0}\')", "newTag-inp-" + @Model.PersonId)
+            {
+                HttpMethod = "POST",
+                UpdateTargetId = "tag-list-" + Model.PersonId,
+                InsertionMode = InsertionMode.Replace,
+                OnSuccess = string.Format("clearInput(\'{0}\')", "newTag-inp-" + @Model.PersonId),
+                Url = Url.Action("AddTag", "Candidate")
 
-       
 
-    }, new { @class = "form-inline", role = "form", id = "form-tag-" + Model.PersonId }))
+
+        }, new { @class = "form-inline", role = "form", id = "form-tag-" + Model.PersonId }))
     {
         @Html.AntiForgeryToken()
 
@@ -17,7 +18,7 @@
 
         <input type="hidden" value="@Model.PersonId" name="id" id="newTag-inp-hidden-@Model.PersonId" />
             <label for="newTag">Nazwy tagów:</label>
-            <input type="text" class="form-control" id="newTag-inp-@Model.PersonId" name="newTag" data-autocomplete-url="@Url.Action("SearchTag")">
+            <input type="text" class="form-control" id="newTag-inp-@Model.PersonId" name="newTag" data-autocomplete-url="@Url.Action("SearchTag","Candidate")">
             <input type="submit" value="Dodaj" class="btn btn-default" id="newTag-btn-@Model.PersonId" />
 
 
@@ -25,25 +26,27 @@
 
     <hr />
     <div id="tag-list-@Model.PersonId">
-        @Html.Partial("_TagList", Model)
+        @Html.Partial("~/Views/Candidate/_TagList.cshtml", Model)
     </div>
 </div>
 
 
 <script type="text/javascript" language="javascript">
-
     $(document).ready(function () {
         $('*[data-autocomplete-url]')
             .each(function () {
                 $(this).autocomplete({
                     source: $(this).data("autocomplete-url"),
 
-                    select: function (event, ui) {
+                    @*select: function (event, ui) {
                         $("#newTag-btn-@Model.PersonId").click();
-                    }
+
+                }*@
 
                 });
             });
     });
 
 </script>
+
+    

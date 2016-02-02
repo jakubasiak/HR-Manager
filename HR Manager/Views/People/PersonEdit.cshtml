@@ -1,0 +1,126 @@
+﻿@using HR_Manager.Models
+@model HR_Manager.Models.Person
+
+@{
+    ViewBag.Title = "Edytuj Dane Osobowe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Edydtuj dane osobowe</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-6">
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+                <dl class="dl-horizontal vert-align">
+                    <dt class="form-group">
+
+                        <strong>@Html.DisplayNameFor(model => model.Name)</strong>
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            
+                    </dt>
+
+                    <dd class="form-group">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    </dd>
+
+                    <dt class="form-group">
+                        <strong>@Html.DisplayNameFor(model => model.Surname)</strong>
+                    </dt>
+
+                    <dd class="form-group">
+                        @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control" } })
+                    </dd>
+
+                    <dt class="form-group">
+                        <strong>@Html.DisplayNameFor(model => model.Email)</strong>
+                    </dt>
+
+                    <dd class="form-group">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    </dd>
+
+                    <dt class="form-group">
+                        <strong> @Html.DisplayNameFor(model => model.PhoneNumber)</strong>
+                    </dt>
+
+                    <dd class="form-group">
+                        @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    </dd>
+
+                    <dt class="form-group">
+                        <strong>@Html.DisplayNameFor(model => model.Street)</strong>
+                    </dt>
+
+                    <dd class="form-group">
+                        @Html.EditorFor(model => model.Street, new { htmlAttributes = new { @class = "form-control" } })
+                    </dd>
+
+                    <dt class="form-group">
+                        <strong>@Html.DisplayNameFor(model => model.Zip)</strong>
+                    </dt>
+
+                    <dd class="form-group">
+                        @Html.EditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control" } })
+                    </dd>
+
+                    <dt class="form-group">
+                        <strong>@Html.DisplayNameFor(model => model.City)</strong>
+                    </dt>
+
+                    <dd class="form-group">
+                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                    </dd>
+
+                    @*<dt class="form-group">
+        <strong>@Html.DisplayNameFor(model => model.CVPath)</strong>
+    </dt>
+
+    <dd class="form-group">
+        @Html.ActionLink("Pobierz", "GetCV", "Candidate", new { path = Model.CVPath, name = Model.GetFullName() }, new { type = "button", @class = "btn btn-sm btn-default" })
+    </dd>*@
+
+                    <dt class="form-group">
+                        <strong>@Html.DisplayNameFor(model => model.PersonalDataProcessing)</strong>
+                    </dt>
+
+                    <dd class="form-group">
+                        @Html.EditorFor(model => model.PersonalDataProcessing)
+                    </dd>
+
+                    <dt class="form-group">
+                        <strong>@Html.DisplayNameFor(model => model.CanContact)</strong>
+                    </dt>
+
+                    <dd class="form-group">
+                        @Html.EditorFor(model => model.CanContact)
+                    </dd>
+
+                </dl>
+}
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Zapisz dane" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                @Html.Partial("~/Views/Candidate/_AddTag.cshtml", new TagListViewModel() { Tags = Model.Tags, PersonId = Model.Id })
+            </div>
+        </div>
+        <div class="panel-footer">
+            <p>
+                @Html.ActionLink("Do listy personalnej", "Index")
+            </p>
+        </div>
+    </div>
+
+</div>
+
+
