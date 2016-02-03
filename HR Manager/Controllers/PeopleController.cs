@@ -23,15 +23,16 @@ namespace HR_Manager.Controllers
 
         public async Task<ActionResult> FindPerson(string term)
         {
+            term = term.ToLower();
             var tagsList = dao.GetTagList()
-                .Where(x => x.Tag.Contains(term))
+                .Where(x => x.Tag.ToLower().Contains(term))
                 .Select(x => x.Tag)
                 .Distinct()
                 .Take(5)
                 .ToList();
 
             var peopleList = dao.GetPeopleList()
-                .Where(x => x.Name.Contains(term) || x.Surname.Contains(term) || x.City.Contains(term))
+                .Where(x => x.Name.ToLower().Contains(term) || x.Surname.ToLower().Contains(term) || x.City.ToLower().Contains(term))
                 .Select(x => x.GetFullName())
                 .Distinct().Take(5)
                 .ToList();
@@ -45,11 +46,12 @@ namespace HR_Manager.Controllers
         {
             if (!string.IsNullOrEmpty(candidateSearch))
             {
+                candidateSearch = candidateSearch.ToLower();
                 var peopleList = dao.GetPeopleList()
-                    .Where(x => x.Name.Contains(candidateSearch) || x.Surname.Contains(candidateSearch) || x.City.Contains(candidateSearch) || x.GetFullName().Contains(candidateSearch));
+                    .Where(x => x.Name.ToLower().Contains(candidateSearch) || x.Surname.ToLower().Contains(candidateSearch) || x.City.ToLower().Contains(candidateSearch) || x.GetFullName().ToLower().Contains(candidateSearch));
 
                 var tagContainTerm = dao.GetTagList()
-                    .Where(x => x.Tag.Contains(candidateSearch));
+                    .Where(x => x.Tag.ToLower().Contains(candidateSearch));
 
                 var peopleWithTag = dao.GetPeopleList().Where(x => x.Tags.Intersect(tagContainTerm).Any());
 
@@ -158,62 +160,64 @@ namespace HR_Manager.Controllers
             return View("CreatePerson", personVM);
         }
 
-                        // GET: People/Edit/5
-                        public ActionResult Edit(int? id)
-                        {
-                            if (id == null)
-                            {
-                                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                            }
-                            Person person = dao.GetPersonById((int)id);
-                            if (person == null)
-                            {
-                                return HttpNotFound();
-                            }
-                            return View("PersonEdit", person);
-                        }
+        // GET: People/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Person person = dao.GetPersonById((int)id);
+            if (person == null)
+            {
+                return HttpNotFound();
+            }
+            return View("PersonEdit", person);
+        }
 
-                        // POST: People/Edit/5
-                        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-                        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-                        [HttpPost]
-                        [ValidateAntiForgeryToken]
-                        public ActionResult Edit(Person person)
-                        {
-                            if (ModelState.IsValid)
-                            {
-                                dao.UpdatatePerson(person);
-                                return RedirectToAction("Index");
-                            }
-                            return View(person);
-                        }
-        /*
-                        // GET: People/Delete/5
-                        public ActionResult Delete(int? id)
-                        {
-                            if (id == null)
-                            {
-                                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                            }
-                            Person person = db.People.Find(id);
-                            if (person == null)
-                            {
-                                return HttpNotFound();
-                            }
-                            return View(person);
-                        }
+        // POST: People/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Person person)
+        {
+            if (ModelState.IsValid)
+            {
+                dao.UpdatatePerson(person);
+                return RedirectToAction("Index");
+            }
+            return View(person);
+        }
 
-                        // POST: People/Delete/5
-                        [HttpPost, ActionName("Delete")]
-                        [ValidateAntiForgeryToken]
-                        public ActionResult DeleteConfirmed(int id)
-                        {
-                            Person person = db.People.Find(id);
-                            db.People.Remove(person);
-                            db.SaveChanges();
-                            return RedirectToAction("Index");
-                        }
-                    */
+        // GET: People/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Person person = dao.GetPersonById((int)id);
+            if (person == null)
+            {
+                return HttpNotFound();
+            }
+            dao.RemovePersonById((int)id);
+            return PartialView("PeopleList", dao.GetPeopleList());
+        }
+
+        // POST: People/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Person person = db.People.Find(id);
+        //    db.People.Remove(person);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
+
 
 
 

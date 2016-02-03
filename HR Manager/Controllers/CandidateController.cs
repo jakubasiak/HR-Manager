@@ -152,6 +152,7 @@ namespace HR_Manager.Controllers
             Person person = dao.GetPersonById(personId);
             SkillTag tag = dao.GetTagById(tagId);
             person.Tags.Remove(tag);
+            dao.RemoveTagById(tagId);
 
             dao.UpdatatePerson(person);
 

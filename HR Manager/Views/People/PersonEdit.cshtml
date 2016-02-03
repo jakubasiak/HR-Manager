@@ -102,13 +102,13 @@
                     </dd>
 
                 </dl>
-}
+
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Zapisz dane" class="btn btn-default" />
                     </div>
                 </div>
-
+}
             </div>
             <div class="col-md-6">
                 @Html.Partial("~/Views/Candidate/_AddTag.cshtml", new TagListViewModel() { Tags = Model.Tags, PersonId = Model.Id })
@@ -116,7 +116,7 @@
         </div>
         <div class="panel-footer">
             <p>
-                @Html.ActionLink("Do listy personalnej", "Index")
+                @Html.ActionLink("Wróć do listy", "Index")
             </p>
         </div>
     </div>

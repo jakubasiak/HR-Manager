@@ -41,6 +41,11 @@ namespace HR_Manager.Models
                 .WithMany(x => x.Candidate)
                 .WillCascadeOnDelete(true);
 
+            modelBuilder.Entity<Person>()
+                .HasMany<Candidate>(x=>x.Candidates)
+                .WithRequired(x => x.Person)
+                .WillCascadeOnDelete(true);
+
             //modelBuilder.Entity<Recruitment>().HasOptional<RecruitmentEvent>().WithOptionalDependent().WillCascadeOnDelete(true);
                 
         }

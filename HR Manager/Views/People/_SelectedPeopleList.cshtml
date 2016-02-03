@@ -40,7 +40,9 @@
                     <div class="btn-group btn">
                         <a class="btn btn-md btn-default" href="@Url.Action("Edit","People",new {id = item.Id })" type="button">Edytuj</a>
                         <a class="btn btn-md btn-default" href="@Url.Action("Details","People",new {id = item.Id })" type="button">Pokaż</a>
-                        <a class="btn btn-md btn-default" href="@Url.Action("Delete","People",new {id = item.Id })" type="button">Usuń</a>
+                        <a class="btn btn-md btn-default" onclick=deleteConf('delete-@item.Id') id="delete-@item.Id" value="@Url.Action("Delete","People",new {id = item.Id })" type="button">Usuń</a>
+                        <a class="btn btn-md btn-default" href="@Url.Action("GetCV","Candidate",new {path = item.CVPath, name = item.GetFullName() })" type="button">CV</a>
+
                     </div>
                 </td>
             </tr>

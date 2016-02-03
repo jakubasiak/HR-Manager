@@ -12,6 +12,8 @@ namespace HR_Manager.Models
         [MaxLength(250,ErrorMessage ="Maksymalna długość tagu to 250 znaków.")]
         public string Tag { get; set; }
 
+        [Display(Name = "Kolor tagu")]
+
         public virtual ICollection<Person> People { get; set; }
     }
 }

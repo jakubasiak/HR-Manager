@@ -222,6 +222,10 @@
     <Compile Include="Migrations\201601300900268_20160130.Designer.cs">
       <DependentUpon>201601300900268_20160130.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602031133393_20160203.cs" />
+    <Compile Include="Migrations\201602031133393_20160203.Designer.cs">
+      <DependentUpon>201602031133393_20160203.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -305,6 +309,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\Fonts\Lato-Light.ttf" />
@@ -434,6 +439,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601300900268_20160130.resx">
       <DependentUpon>201601300900268_20160130.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602031133393_20160203.resx">
+      <DependentUpon>201602031133393_20160203.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

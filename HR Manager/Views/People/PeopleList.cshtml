@@ -74,4 +74,39 @@
     });
 
 </script>
+<script src="@Url.Content("~/Scripts/bootbox.min.js")"></script>
+<script>
+    function deleteConf(id) {
+
+        bootbox.confirm({
+            title: 'Usuń kandydata',
+            message: 'Czy napewno chcesz usunąć kandydata z bazy personalnej',
+            buttons: {
+                'cancel': {
+                    label: 'Cofnij',
+                    className: 'btn-default pull-left'
+                },
+                'confirm': {
+                    label: 'Usuń',
+                    className: 'btn-danger pull-right'
+                }
+            },
+            callback: function (result) {
+                if (result) {
+                    alert($("#"+id).attr("value"));
+                    $.ajax({
+                        url: $("#"+id).attr("value"),
+                        type: "POST",
+                        success: function (data) {
+                            // data is ur summary
+                            $('#candidatePanelList').html(data);
+                        }
+
+                    });
+                }
+            }
+        });
+    }
+</script>
+       
 }

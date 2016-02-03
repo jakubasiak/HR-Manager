@@ -166,3 +166,4 @@ E:\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160130.resources
 E:\HR Manager\HR Manager\obj\Debug\HR Manager.csproj.GenerateResource.Cache
 E:\HR Manager\HR Manager\obj\Debug\HR Manager.dll
 E:\HR Manager\HR Manager\obj\Debug\HR Manager.pdb
+E:\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160203.resources

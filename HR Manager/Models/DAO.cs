@@ -269,6 +269,33 @@ namespace HR_Manager.Models
         {
             return db.People;
         }
+        public bool RemovePersonById(int id)
+        {
+            try
+            {
+                Person pe = GetPersonById(id);
+                IEnumerable<PersonNote> pn = pe.Notes;
+                db.Notes.RemoveRange(pn);
+
+                IEnumerable<SkillTag> st = pe.Tags;
+                db.Tags.RemoveRange(st);
+
+                IEnumerable<Candidate> cn = pe.Candidates;
+                db.Candidates.RemoveRange(cn);
+
+                db.People.Remove(pe);
+                db.SaveChanges();
+
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                string s = e.StackTrace;
+                //WriteErrorLog("Nieudany usunięcie ogłoszenia " + DateTime.Now);
+                return false;
+            }
+        }
 
         #endregion
 
@@ -355,7 +382,26 @@ namespace HR_Manager.Models
         {
             return db.Tags;
         }
+        public bool RemoveTagById(int id)
+        {
+            try
+            {
+                SkillTag st = GetTagById(id);
+                db.Tags.Remove(st);
+
+                db.SaveChanges();
+
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                //WriteErrorLog("Nieudany usunięcie ogłoszenia " + DateTime.Now);
+                return false;
+            }
+        }
         #endregion
+
 
         #region Pozostałe prywatne
 

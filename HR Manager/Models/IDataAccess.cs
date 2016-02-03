@@ -46,6 +46,7 @@ namespace HR_Manager.Models
         Person GetPersonById(int id);
         bool UpdatatePerson(Person person);
         IEnumerable<Person> GetPeopleList();
+        bool RemovePersonById(int id);
         #endregion
 
         #region PersonNote
@@ -58,6 +59,7 @@ namespace HR_Manager.Models
         SkillTag GetTagByTagName(string TagName);
         SkillTag GetTagById(int id);
         IQueryable<SkillTag> GetTagList();
+        bool RemoveTagById(int id);
         #endregion
 
         bool SaveFileOnServer(string path, HttpPostedFileBase file);
