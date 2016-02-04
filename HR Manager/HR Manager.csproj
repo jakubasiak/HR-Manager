@@ -232,6 +232,7 @@
     <Compile Include="Models\ApplyViewModel.cs" />
     <Compile Include="Models\Candidate.cs" />
     <Compile Include="Models\ContactViewModel.cs" />
+    <Compile Include="Models\EditPersonViewModel.cs" />
     <Compile Include="Models\EmailSender.cs" />
     <Compile Include="Models\IEmailSender.cs" />
     <Compile Include="Models\PersonNote.cs" />
@@ -258,6 +259,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\AppErrorLog.txt" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\13.png" />
@@ -310,8 +313,6 @@
     <Content Include="Global.asax" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootbox.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\Fonts\Lato-Light.ttf" />
     <Content Include="Content\Fonts\Lato-LightItalic.ttf" />
     <Content Include="Content\Fonts\Lato-Medium.ttf" />
@@ -325,7 +326,19 @@
     <Content Include="Content\Fonts\Lato-MediumItalic.woff" />
     <Content Include="Content\Fonts\Lato-Regular.woff" />
     <Content Include="App_Browsers\qt.browser" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="Scripts\bootstrap-filestyle.js" />
+    <Content Include="Scripts\bootstrap-filestyle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
@@ -415,9 +428,6 @@
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>

@@ -172,7 +172,22 @@ namespace HR_Manager.Controllers
             {
                 return HttpNotFound();
             }
-            return View("PersonEdit", person);
+            EditPersonViewModel model = new EditPersonViewModel()
+            {
+                CanContact = person.CanContact,
+                City = person.City,
+                CVPath = person.CVPath,
+                Email = person.Email,
+                Id = person.Id,
+                Name = person.Name,
+                PersonalDataProcessing = person.PersonalDataProcessing,
+                PhoneNumber = person.PhoneNumber,
+                Street = person.Street,
+                Surname = person.Surname,
+                Tags = person.Tags,
+                Zip = person.Zip,
+            };
+            return View("PersonEdit", model);
         }
 
         // POST: People/Edit/5
@@ -180,14 +195,38 @@ namespace HR_Manager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Person person)
+        public ActionResult Edit(EditPersonViewModel personVM)
         {
             if (ModelState.IsValid)
             {
+                bool cvSaved = true;
+                string path = personVM.CVPath;
+                if (personVM.CVFile != null)
+                {
+                    if(string.IsNullOrEmpty(personVM.CVPath))
+                    { 
+                        path = Utils.Utils.CreatePath(Server, personVM.CVFile, Utils.AppConfig.CVFolderRelative);
+                    }
+                    cvSaved = dao.SaveFileOnServer(path, personVM.CVFile);
+                }
+
+                    Person person = dao.GetPersonById(personVM.Id);
+
+                person.Name = personVM.Name;
+                person.Surname = personVM.Surname;
+                person.CanContact = personVM.CanContact;
+                person.City = personVM.City;
+                person.Email = personVM.Email;
+                person.PersonalDataProcessing = personVM.PersonalDataProcessing;
+                person.PhoneNumber = personVM.PhoneNumber;
+                person.Street = personVM.Street;
+                person.Zip = personVM.Zip;
+                person.CVPath = path;
+
                 dao.UpdatatePerson(person);
                 return RedirectToAction("Index");
             }
-            return View(person);
+            return View(personVM);
         }
 
         // GET: People/Delete/5
