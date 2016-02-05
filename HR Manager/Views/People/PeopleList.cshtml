@@ -26,87 +26,87 @@
         UpdateTargetId = "candidatePanelList",
         InsertionMode = InsertionMode.Replace
 
-    }, new { @class = "form-inline", role = "form" }))
+    }, new { @class = "", role = "form" }))
     {
         @Html.AntiForgeryToken()
 
 
         <div class="panel panel-default">
             <div class="panel-body">
-                <label for="candidateSearch"><strong>Szukaj kandydatów:</strong></label>
-                <input type="text" class="form-control" id="candidateSearch" name="candidateSearch" data-autocomplete-url="@Url.Action("FindPerson","People")">
-                <input type="submit" value="Szukaj" class="btn btn-default" id="btn-candidateSearch" />
+                <label for="candidateSearch" class="col-md-2"><strong>Szukaj kandydatów:</strong></label>
+                <input type="text" class="form-control col-md-8" id="candidateSearch" name="candidateSearch" data-autocomplete-url="@Url.Action("FindPerson","People")">
+                <input type="submit" value="Szukaj" class="btn btn-default col-md-2" id="btn-candidateSearch" />
             </div>
         </div>
 
-            }
+    }
 
-            <div class="panel panel-default">
-                <div class="panel-heading"><strong>Kandydaci</strong></div>
-                @if (Model.Count() > 0)
-                {
-                    <div class="panel-body" id="candidatePanelList">
-                        @Html.Partial("_SelectedPeopleList", Model)
-                    </div>
-                }
-                else
-                {
-                    <p>Brak kandydatów w bazie personalnej</p>
-                }
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>Kandydaci</strong></div>
+        @if (Model.Count() > 0)
+        {
+            <div class="panel-body" id="candidatePanelList">
+                @Html.Partial("_SelectedPeopleList", Model)
             </div>
+        }
+        else
+        {
+            <p>Brak kandydatów w bazie personalnej</p>
+        }
+    </div>
 
-        </div>
+</div>
 @section scripts
 {
-<script type="text/javascript" language="javascript">
-    $(document).ready(function () {
-        $('*[data-autocomplete-url]')
-            .each(function () {
-                $(this).autocomplete({
-                    source: $(this).data("autocomplete-url"),
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function () {
+            $('*[data-autocomplete-url]')
+                .each(function () {
+                    $(this).autocomplete({
+                        source: $(this).data("autocomplete-url"),
 
-                    select: function (event, ui) {
-                        $("#btn-candidateSearch").click();
-                    }
-
-                });
-            });
-    });
-
-</script>
-<script src="@Url.Content("~/Scripts/bootbox.min.js")"></script>
-<script>
-    function deleteConf(id) {
-
-        bootbox.confirm({
-            title: 'Usuń kandydata',
-            message: 'Czy napewno chcesz usunąć kandydata z bazy personalnej',
-            buttons: {
-                'cancel': {
-                    label: 'Cofnij',
-                    className: 'btn-default pull-left'
-                },
-                'confirm': {
-                    label: 'Usuń',
-                    className: 'btn-danger pull-right'
-                }
-            },
-            callback: function (result) {
-                if (result) {
-                    alert($("#"+id).attr("value"));
-                    $.ajax({
-                        url: $("#"+id).attr("value"),
-                        type: "POST",
-                        success: function (data) {
-                            // data is ur summary
-                            $('#candidatePanelList').html(data);
-                        }
+                        //select: function (event, ui) {
+                        //    $("#btn-candidateSearch").click();
+                        //}
 
                     });
-                }
-            }
+                });
         });
-    }
-</script>
-       
+
+    </script>
+    <script src="@Url.Content("~/Scripts/bootbox.min.js")"></script>
+    <script>
+        function deleteConf(id) {
+
+            bootbox.confirm({
+                title: 'Usuń kandydata',
+                message: 'Czy napewno chcesz usunąć kandydata z bazy personalnej',
+                buttons: {
+                    'cancel': {
+                        label: 'Cofnij',
+                        className: 'btn-default pull-left'
+                    },
+                    'confirm': {
+                        label: 'Usuń',
+                        className: 'btn-danger pull-right'
+                    }
+                },
+                callback: function (result) {
+                    if (result) {
+                        alert($("#" + id).attr("value"));
+                        $.ajax({
+                            url: $("#" + id).attr("value"),
+                            type: "POST",
+                            success: function (data) {
+                                // data is ur summary
+                                $('#candidatePanelList').html(data);
+                            }
+
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+
 }

@@ -102,16 +102,15 @@
                 <div class="panel-heading" data-toggle="collapse" data-target="#Files"><strong>Załączniki</strong></div>
                 <div class="panel-body collapse in" id="Files">
 
-                    <div class="input-group">
-                        <span class="input-group-btn" style="vertical-align: unset;">
-                            <span class="btn btn-default btn-file">
-                                Załącz CV (PDF)&hellip; <input type="file" name="CVFile" accept="application/pdf">
-                            </span>
-                        </span>
-                        <input type="text" class="form-control" readonly>
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <input type="file" class="filestyle" accept="application/pdf" name="CVFile" id="CVFile">
+                        </div>
+                        <div class="col-md-10">
+                            <input id="fileLoaderInput" type="text" class="form-control text-box single-lin" readonly>
+                            </div>
+                        </div>
                     </div>
-
-                </div>
             </div>
             
             <div class="panel panel-default">
@@ -170,3 +169,20 @@
     }
 
 </div>
+
+@section scripts{
+
+    <script src="@Url.Content("~/Scripts/bootstrap-filestyle.min.js")"></script>
+    <script>
+    $(":file").filestyle({ badge: false });
+    $(":file").filestyle('buttonText', 'Załącz CV (PDF)');
+    $(":file").filestyle('input', false);
+
+
+    $(":file").change(function (e) {
+        $in = $(this);
+        $("#fileLoaderInput").val($in.val());
+    });
+
+    </script>
+}

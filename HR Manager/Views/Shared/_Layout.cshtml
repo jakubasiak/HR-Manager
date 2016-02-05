@@ -25,10 +25,35 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Rekrutacja
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Dodaj Rekrutacje", "Create", "Recruitment")</li>
+                            <li>@Html.ActionLink("Menadżer rekrutacji", "List", "Recruitment")</li>
+                        </ul>
+                    </li>
+
+                    <li>@Html.ActionLink("Ogłoszenia", "ShowJobOfferList", "Career")</li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Kandydaci
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Dodaj kandydata", "Create", "People")</li>
+                            <li>@Html.ActionLink("Baza personalna", "Index", "People")</li>
+                        </ul>
+                    </li>
+
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

@@ -266,6 +266,7 @@
     <Content Include="Content\Images\13.png" />
     <Content Include="Content\Images\13_12.png" />
     <Content Include="Content\Images\2.png" />
+    <Content Include="Content\Images\3.png" />
     <Content Include="Content\Images\4.png" />
     <Content Include="Content\Images\5.png" />
     <Content Include="Content\Images\ajax-loader.gif" />
