@@ -1,7 +1,36 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "O Autorach";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<div class="container">
+    <div style="height:50px"></div>
+    <div class="panel">
+        <div class="panel-body">
+            <h2><strong>O autorach</strong></h2>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="@Url.Content("~/Content/Images/Ada.jpg")" style="width:200px; height:200px;" />
+                </div>
+                <div class="col-md-9">
+                    <h4><strong>Ada Jurkowlaniec</strong></h4>
+                    <h5>HR Coordinator w Connectmedica</h5>
+                    <p>Ekspert z zakresu zarządzania zasobami ludzkimi i prowadzenia rekrutacji.</p>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="@Url.Content("~/Content/Images/kuba.jpg")" style="width:200px; height:200px;" />
+                </div>
+                <div class="col-md-9">
+                    <h4><strong>Jakub Kubasiak</strong></h4>
+                    <h5>HVAC Designer w PROCHEM S.A.</h5>
+                    <p>Programista amator</p>
+                    <p>Email: kubakubasiak@gmail.com</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

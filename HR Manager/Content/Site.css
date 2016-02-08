@@ -1,23 +1,26 @@
 ﻿@font-face {
     font-family: 'Lato-Light';
     src: url('Fonts/Lato-Light.ttf') format('truetype');
-    font-weight:bold;
+    font-weight: bold;
 }
+
 @font-face {
     font-family: 'Lato-Medium';
     src: url('Fonts/Lato-Medium.ttf') format('truetype');
 }
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;
     font-family: Lato-Light;
-    color:black;
+    color: black;
     background-image: url('Images/tlo2.jpg');
     background-repeat: no-repeat;
     background-position: right top;
     background-attachment: fixed;
 }
-strong{
+
+strong {
     font-family: Lato-Medium;
 }
 /* Set padding to keep content from hitting the edges */
@@ -25,7 +28,8 @@ strong{
     padding-left: 15px;
     padding-right: 15px;
 }
-.jumbotron h1, h3{
+
+.jumbotron h1, h3 {
     font-family: Lato-Medium;
 }
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -54,14 +58,17 @@ textarea {
     text-align: center;
     border-radius: 6px;
 }
-img{
-    margin:5px;
+
+img {
+    margin: 5px;
 }
-.tile:hover{
-    background-color:#eeeeee;
+
+.tile:hover {
+    background-color: #eeeeee;
     border-radius: 6px;
-    color:black;
+    color: black;
 }
+
 .multi-input {
 }
 
@@ -69,47 +76,114 @@ img{
     margin-left: 50px;
     margin-top: 5px;
 }
-a{
-    color:black;
-}
-a:hover {
-    text-decoration: none;
-    font-weight:bolder;
 
+a {
+    color: black;
 }
+
+    a:hover {
+        text-decoration: none;
+        font-weight: bolder;
+    }
 
 
 
 .btn-file {
-  position: relative;
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
-.btn-file input[type=file] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 100%;
-  min-height: 100%;
-  font-size: 100px;
-  text-align: right;
-  filter: alpha(opacity=0);
-  opacity: 0;
-  background: red;
-  cursor: inherit;
-  display: block;
-}
+
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        background: red;
+        cursor: inherit;
+        display: block;
+    }
+
 input[readonly] {
-  background-color: white !important;
-  cursor: text !important;
+    background-color: white !important;
+    cursor: text !important;
 }
+
 td, th {
-    text-align:center;
-    vertical-align:central;
+    text-align: center;
+    vertical-align: central;
 }
-.table tbody>tr>td.vert-align, .vert-align{
+
+.table tbody > tr > td.vert-align, .vert-align {
     vertical-align: middle;
 }
-.btn, .btn-default{
-    margin-top:3px;
+
+.btn, .btn-default {
+    margin-top: 3px;
     margin-bottom: 3px;
+}
+
+#power img {
+    filter: invert(55%);
+}
+
+#power:hover img {
+    filter: invert(95%);
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 70%;
+    margin: auto;
+}
+
+.carousel-caption {
+
+    color: #000;
+    font-family: Lato-Light;
+    
+}
+
+.carousel-indicators li {
+    border-color: #000;
+}
+
+.carousel-indicators .active {
+    border-color: #000;
+    background-color: #000;
+}
+
+.carousel-caption h3 {
+    background-color: #eee;
+    opacity: 0.8;
+    margin: 0px;
+    width:100%;
+}
+
+.carousel-caption p {
+        background-color: #eee;
+    opacity: 0.8;
+    margin: 0px;
+    width:100%;
+}
+.carousel-control{
+    width:5%;
+    margin:0px;
+}
+/*.carousel-control.right{
+    background-image:none;
+}
+.carousel-control.left{
+    background-image:none;
+}*/
+.carousel .item {
+    border-radius: 5px;
+    overflow: hidden;
+}
+.carousel-control {
+    border-radius: 5px;
 }

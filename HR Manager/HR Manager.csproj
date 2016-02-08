@@ -269,8 +269,16 @@
     <Content Include="Content\Images\3.png" />
     <Content Include="Content\Images\4.png" />
     <Content Include="Content\Images\5.png" />
+    <Content Include="Content\Images\8.png" />
+    <Content Include="Content\Images\8a.png" />
+    <Content Include="Content\Images\Ada.jpg" />
     <Content Include="Content\Images\ajax-loader.gif" />
+    <Content Include="Content\Images\Capture1.JPG" />
+    <Content Include="Content\Images\Capture2.JPG" />
+    <Content Include="Content\Images\Capture3.JPG" />
+    <Content Include="Content\Images\Capture4.JPG" />
     <Content Include="Content\Images\jquery-te.png" />
+    <Content Include="Content\Images\Kuba.jpg" />
     <Content Include="Content\Images\tlo.jpg" />
     <Content Include="Content\Images\tlo2.jpg" />
     <Content Include="Content\jquery-te-1.4.0.css" />
@@ -370,7 +378,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -421,6 +428,7 @@
     <Content Include="Views\People\PersonDetails.cshtml" />
     <Content Include="Views\People\CreatePerson.cshtml" />
     <Content Include="Views\People\PersonEdit.cshtml" />
+    <Content Include="Views\Shared\_PublicLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\CV\" />
