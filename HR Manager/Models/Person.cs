@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 namespace HR_Manager.Models
@@ -60,10 +61,46 @@ namespace HR_Manager.Models
             else
                 return str;
         }
-        //DODAC!
-        public bool ContainTag(string name)
+        public override string ToString()
         {
-            return true;
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Imię:");
+            sb.Append(Name);
+            sb.Append(";");
+
+            sb.Append("Nazwisko:");
+            sb.Append(Surname);
+            sb.Append(";");
+
+            sb.Append("Email:");
+            sb.Append(Email);
+            sb.Append(";");
+
+            sb.Append("Nr:");
+            sb.Append(PhoneNumber);
+            sb.Append(";");
+
+            sb.Append("Ulica:");
+            sb.Append(Street);
+            sb.Append(";");
+
+            sb.Append("Kod:");
+            sb.Append(Zip);
+            sb.Append(";");
+
+            sb.Append("Miasto:");
+            sb.Append(City);
+            sb.Append(";");
+
+            sb.Append("Zgoda_Na_przetwarzanie_danych:");
+            sb.Append(PersonalDataProcessing);
+            sb.Append(";");
+
+            sb.Append("Zgoda_Na_Kontakt:");
+            sb.Append(CanContact);
+            sb.Append(";");
+
+            return sb.ToString();
         }
     }
 }

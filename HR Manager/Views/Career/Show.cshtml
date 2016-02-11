@@ -21,6 +21,18 @@
                     }
         </p>
     </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p>
+            <a href="@Url.Action("Index", "Home")" type="button" class="btn btn-default">Strona główna</a>
+
+            <a href="@Url.Action("Show", "Recruitment", new {id = Model.OfferNumber })" type="button" class="btn btn-default">Rekrutacja</a>
+
+            <a href="@Url.Action("ShowJobOfferList", "Career")" type="button" class="btn btn-default">Lista ogłoszeń</a>
+        </p>
+    }
+
+
    @if (!string.IsNullOrEmpty(Model.AboutCompany)) { 
     <div class="panel panel-default">
         <div class="panel-heading" data-toggle="collapse" data-target="#AboutCompanyPanel"><strong>O firmie</strong></div>

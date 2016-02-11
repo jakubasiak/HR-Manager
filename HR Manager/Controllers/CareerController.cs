@@ -171,6 +171,16 @@ namespace HR_Manager.Controllers
 
                 };
 
+                
+                GIDOLog gl = new GIDOLog()
+                {
+                    Author = person.Name+" "+person.Surname,
+                    AuthorId = "",
+                    Date = DateTime.Now,
+                    Changes = "Zmodyfikowano dane użytkownika:" + person.ToString()
+                };
+                dao.SaveGIDOLog(gl);
+
                 recruitment.Events.Add(ev);
                 recruitment.Candidate.Add(candidate);
 

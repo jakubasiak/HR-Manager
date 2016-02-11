@@ -131,7 +131,6 @@ E:\HR Manager\HR Manager\bin\System.Web.WebPages.Razor.dll
 E:\HR Manager\HR Manager\bin\WebGrease.dll
 E:\HR Manager\HR Manager\bin\itextsharp.xml
 E:\HR Manager\HR Manager\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\HR Manager\HR Manager\bin\RazorEngine.pdb
 E:\HR Manager\HR Manager\bin\RazorEngine.xml
 E:\HR Manager\HR Manager\bin\System.Web.Helpers.xml
 E:\HR Manager\HR Manager\bin\System.Web.Mvc.xml
@@ -167,3 +166,18 @@ E:\HR Manager\HR Manager\obj\Debug\HR Manager.csproj.GenerateResource.Cache
 E:\HR Manager\HR Manager\obj\Debug\HR Manager.dll
 E:\HR Manager\HR Manager\obj\Debug\HR Manager.pdb
 E:\HR Manager\HR Manager\obj\Debug\HR_Manager.Migrations._20160203.resources
+E:\HR Manager\HR Manager\bin\roslyn\csc.exe.config
+E:\HR Manager\HR Manager\bin\roslyn\csc.rsp
+E:\HR Manager\HR Manager\bin\roslyn\csi.exe
+E:\HR Manager\HR Manager\bin\roslyn\csi.rsp
+E:\HR Manager\HR Manager\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\HR Manager\HR Manager\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\HR Manager\HR Manager\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\HR Manager\HR Manager\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\HR Manager\HR Manager\bin\roslyn\System.AppContext.dll
+E:\HR Manager\HR Manager\bin\roslyn\System.Console.dll
+E:\HR Manager\HR Manager\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\HR Manager\HR Manager\bin\roslyn\System.IO.FileSystem.dll
+E:\HR Manager\HR Manager\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\HR Manager\HR Manager\bin\roslyn\vbc.exe.config
+E:\HR Manager\HR Manager\bin\roslyn\vbc.rsp

@@ -1,29 +1,34 @@
 ﻿
 @model int
-@using (Ajax.BeginForm("AddNote", "Candidate", new
-{ id = Model }, new AjaxOptions
-{
-    HttpMethod = "POST",
-    UpdateTargetId = "result_" + Model,
-    InsertionMode = InsertionMode.Replace,
-    LoadingElementId = "ajaxLoader",
+
+    @using (Ajax.BeginForm("AddNote", "Candidate", new
+    {
+        id = Model
+    }, new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "result_" + Model,
+        InsertionMode = InsertionMode.Replace,
+        LoadingElementId = "ajaxLoader",
 
 
 
-}))
-{
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <strong>Dodaj notatkę</strong>
-        </div>
-        <div class="panel-body">
+    }, new { @class = "panel panel-default" }))
+    {
 
-            @Html.AntiForgeryToken()
-            <textarea type="text" class="form-control span6 col-md-8" name="note" rows="10"></textarea>
+        @*<div class="panel panel-default">*@
+            <div class="panel-heading">
+                <strong>Dodaj notatkę</strong>
+            </div>
+            <div class="panel-body">
 
-        </div>
-        <div class="panel-footer">
-            <input type="submit" class="btn btn-default" value="Dodaj" />
-        </div>
-    </div>
-}
+                @Html.AntiForgeryToken()
+                <textarea type="text" class="form-control span6 col-md-8" name="note" rows="10"></textarea>
+
+            </div>
+            <div class="panel-footer">
+                <input type="submit" class="btn btn-default" value="Dodaj" />
+            </div>
+        @*</div>*@
+
+    }

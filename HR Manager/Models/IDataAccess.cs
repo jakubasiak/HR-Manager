@@ -62,6 +62,9 @@ namespace HR_Manager.Models
         bool RemoveTagById(int id);
         #endregion
 
+        #region GIDO
+        bool SaveGIDOLog(GIDOLog gl);
+        #endregion
         bool SaveFileOnServer(string path, HttpPostedFileBase file);
         
 

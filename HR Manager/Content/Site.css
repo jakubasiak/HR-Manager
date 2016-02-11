@@ -15,7 +15,7 @@ body {
     font-family: Lato-Light;
     color: black;
     background-image: url('Images/tlo2.jpg');
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-position: right top;
     background-attachment: fixed;
 }

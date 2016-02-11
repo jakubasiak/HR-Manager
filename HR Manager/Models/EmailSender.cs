@@ -29,7 +29,7 @@ namespace HR_Manager.Models
                 client.EnableSsl = true;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
-                client.Credentials = new NetworkCredential("kubakubasiak", "fasta123");
+                client.Credentials = new NetworkCredential("username", "password");
 
                 client.Send(message);
                 message.Dispose();

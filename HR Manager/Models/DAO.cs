@@ -402,6 +402,21 @@ namespace HR_Manager.Models
         }
         #endregion
 
+        #region GIDO
+        public bool SaveGIDOLog(GIDOLog gl)
+        {
+            try
+            {
+                db.GiDOlog.Add(gl);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        #endregion
 
         #region Pozostałe prywatne
 

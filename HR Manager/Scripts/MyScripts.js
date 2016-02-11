@@ -40,5 +40,5 @@ function panelRemove(arg) {
 
 };
 function hide(arg) {
-    $(arg).text("");
+    $(arg).empty();
 };

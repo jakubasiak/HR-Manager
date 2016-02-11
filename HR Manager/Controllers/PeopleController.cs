@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using HR_Manager.Models;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity;
 
 namespace HR_Manager.Controllers
 {
@@ -152,6 +154,16 @@ namespace HR_Manager.Controllers
                     }
                 }
 
+                ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+                GIDOLog gl = new GIDOLog()
+                {
+                    Author = user.FirstName + " " + user.Surname,
+                    AuthorId = user.Id,
+                    Date = DateTime.Now,
+                    Changes = "Dodanie danych personalnych do bazy: " + Json(person)
+                };
+                dao.SaveGIDOLog(gl);
+
                 dao.SavePerson(person);
 
                 return RedirectToAction("Index", "People");
@@ -223,7 +235,20 @@ namespace HR_Manager.Controllers
                 person.Zip = personVM.Zip;
                 person.CVPath = path;
 
-                dao.UpdatatePerson(person);
+                ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+                GIDOLog gl = new GIDOLog()
+                {
+                    Author = user.FirstName + " " + user.Surname,
+                    AuthorId = user.Id,
+                    Date = DateTime.Now,
+                    Changes = "Zmodyfikowano dane użytkownika:" + person.ToString()
+                };
+                dao.SaveGIDOLog(gl);
+    
+
+            dao.UpdatatePerson(person);
+
+
                 return RedirectToAction("Index");
             }
             return View(personVM);
@@ -242,23 +267,19 @@ namespace HR_Manager.Controllers
             {
                 return HttpNotFound();
             }
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            GIDOLog gl = new GIDOLog()
+            {
+                Author = user.FirstName + " " + user.Surname,
+                AuthorId = user.Id,
+                Date = DateTime.Now,
+                Changes = "Usunięto dane użytkownika:" + person.ToString()
+            };
+            dao.SaveGIDOLog(gl);
+
             dao.RemovePersonById((int)id);
             return PartialView("PeopleList", dao.GetPeopleList());
         }
-
-        // POST: People/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    Person person = db.People.Find(id);
-        //    db.People.Remove(person);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
-
-
-
 
     }
 }
