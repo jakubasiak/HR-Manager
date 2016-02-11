@@ -278,6 +278,7 @@
     <Content Include="Content\Images\Capture2.JPG" />
     <Content Include="Content\Images\Capture3.JPG" />
     <Content Include="Content\Images\Capture4.JPG" />
+    <Content Include="Content\Images\favicon.ico" />
     <Content Include="Content\Images\jquery-te.png" />
     <Content Include="Content\Images\Kuba.jpg" />
     <Content Include="Content\Images\tlo.jpg" />

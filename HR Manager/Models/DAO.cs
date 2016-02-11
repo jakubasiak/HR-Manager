@@ -274,6 +274,12 @@ namespace HR_Manager.Models
             try
             {
                 Person pe = GetPersonById(id);
+
+                if(File.Exists(pe.CVPath))
+                {
+                    RemoveFileFromServer(pe.CVPath);
+                }
+
                 IEnumerable<PersonNote> pn = pe.Notes;
                 db.Notes.RemoveRange(pn);
 
@@ -351,7 +357,18 @@ namespace HR_Manager.Models
                 return false;
             }
         }
-
+        public bool RemoveFileFromServer(string path)
+        {
+            try
+            {
+                File.Delete(path);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
 
 
         #endregion
